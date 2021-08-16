@@ -13,13 +13,13 @@ export class Collection extends Network() {
   get model() {
     return false;
   }
-  #onLoad: Function | undefined;
+  onLoad: Function | undefined;
   public list: object = {};
   public externalConfig: object | undefined;
 
   constructor(props: PropsCollection) {
     super(props);
-    this.#onLoad = props?.onLoad;
+    this.onLoad = props?.onLoad;
     this.externalConfig = props?.externalConfig;
 
     return this.init();
@@ -35,7 +35,7 @@ export class Collection extends Network() {
     });
   }
 
-  public load = async () => {
+  public async load() {
     const response = await this.request(this.config.load);
     if (response.status && response.data?.length) {
       this.list = {};
@@ -50,8 +50,8 @@ export class Collection extends Network() {
       }))
     }
 
-    if (this.#onLoad) {
-      this.#onLoad(this)
+    if (this.onLoad) {
+      this.onLoad(this)
     }
 
     return response;

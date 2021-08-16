@@ -16,13 +16,13 @@ export class Model extends Network() {
   }
   public id!: number | undefined;
   public data!: any | undefined;
-  #onLoad: Function | undefined;
+  onLoad: Function | undefined;
 
   constructor(props: PropsModel) {
     super();
     this.id = props?.id;
     this.data = props?.data;
-    this.#onLoad = props?.onLoad;
+    this.onLoad = props?.onLoad;
     return new Promise(async (resolve) => {
       if (props?.id && !props?.data) {
         await this.load()
@@ -43,15 +43,15 @@ export class Model extends Network() {
     }
   }
 
-  public load = async () => {
+  public async load() {
     const response = await this.request(this.config.load);
     if (response.status) {
       this.data = response.data;
     }
 
     this.prepareData();
-    if (this.#onLoad) {
-      this.#onLoad(this)
+    if (this.onLoad) {
+      this.onLoad(this)
     }
 
     return response;
