@@ -1,3 +1,4 @@
+import Log from "@core/helpers/log";
 import Network from "@core/mixins/network";
 
 export interface PropsModel {
@@ -20,7 +21,7 @@ export class Model extends Network() {
     this.data = props?.data;
     this.onLoad = props?.onLoad
 
-    return this.init();
+    this.init();
   }
 
   async init(props?: PropsModel) {

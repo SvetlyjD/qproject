@@ -20,7 +20,7 @@ export class Collection extends Network() {
     this.onLoad = props?.onLoad;
     this.externalConfig = props?.externalConfig;
 
-    return this.init(props);
+    this.init(props);
   }
 
   async init(props?: PropsCollection) {

@@ -10,6 +10,7 @@ import { ElementTypes as CustomElementTypes } from '@components/base/form/elemen
 import MSGS from '@configs/validationMsgs';
 import { setPreloader } from '@core/generated/actions';
 import { bindActionCreators } from 'redux';
+import Log from '@core/helpers/log';
 
 interface P {
   url?: string
@@ -183,7 +184,7 @@ export class Form extends React.Component<P> {
   }
 
   render() {
-    const { wrapperProps, elements } = this.props;
+    const { wrapperProps, elements, model } = this.props;
 
     return (
       <View {...wrapperProps}>
