@@ -15,7 +15,7 @@ export function Element({ element, onSubmit, onChangeValue, getElements, _ref })
     props.element.render = element.render({ theme })
   }
 
-  if (element.condition && !element.condition()) return false;
+  if (element.condition && !element.condition()) return <></>;
 
   const CustomElement = CustomFormElements[element.elementType]
   if (CustomElement) return <CustomElement {...props} />
@@ -24,7 +24,7 @@ export function Element({ element, onSubmit, onChangeValue, getElements, _ref })
   if (BaseElement) return <BaseElement {...props} />
 
   console.error('Element not found', element.elementType)
-  return false
+  return <></>
 }
 
 export default Element;

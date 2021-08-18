@@ -1,28 +1,24 @@
-import Helpers from "@core/helpers";
 import Network from "@core/mixins/network";
 
 export interface PropsModel {
-  id: number,
-  onLoad: Function | undefined,
-  data: object | undefined,
+  id?: number,
+  onLoad?: Function | undefined,
+  data?: object | undefined,
 }
 
 export class Model extends Network() {
-  get config() {
+  get config(): any {
     return {};
   }
   get view() {
     return false;
   }
-  public id!: number | undefined;
-  public data!: any | undefined;
-  onLoad: Function | undefined;
 
-  constructor(props: PropsModel) {
+  constructor(props?: PropsModel) {
     super();
     this.id = props?.id;
     this.data = props?.data;
-    this.onLoad = props?.onLoad;
+    this.onLoad = props?.onLoad
     return new Promise(async (resolve) => {
       if (props?.id && !props?.data) {
         await this.load()
@@ -31,22 +27,18 @@ export class Model extends Network() {
     })
   }
 
-  private onFormSubmit({ body, data }) {
-    Helpers.log(body, data)
-  }
-
-  public prepareData = async () => {
+  async prepareData() {
     if (this.config.prepareData) {
-      this.config.prepareData.forEach((item) => {
+      this.config.prepareData.forEach((item: any) => {
         this.data[item.name] = item.function();
       })
     }
   }
 
-  public async load() {
+  async load() {
     const response = await this.request(this.config.load);
     if (response.status) {
-      this.data = response.data;
+      this.data = response.data
     }
 
     this.prepareData();
@@ -57,17 +49,17 @@ export class Model extends Network() {
     return response;
   }
 
-  public save = async () => {
+  async save() {
     return await this.request(this.config.save, this.data);
   }
 
-  public delete = async () => {
+  async delete() {
     return this.request(this.config.delete);
   }
 
-  public render(...args: any[]): JSX.Element | boolean {
+  render(...args: any[]): JSX.Element | boolean {
     return this.view
   }
 }
 
-export default Model;
+export default Model

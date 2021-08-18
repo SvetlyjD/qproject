@@ -9,8 +9,20 @@ import { ElementTypes as BaseElementTypes } from '@core/components/base/form/ele
 import { ElementTypes as CustomElementTypes } from '@components/base/form/elements'
 import MSGS from '@configs/validationMsgs';
 import { setPreloader } from '@core/generated/actions';
+import { bindActionCreators } from 'redux';
 
-export class Form extends React.Component {
+interface P {
+  url?: string
+  method?: string
+  wrapperProps?: any
+  elements?: any[]
+  formRef?: Function
+  model?: any
+  onError?: Function
+  setPreloader: Function
+  requestType?: string
+}
+export class Form extends React.Component<P> {
   static BaseElementTypes = BaseElementTypes;
 
   static CustomElementTypes = CustomElementTypes;
@@ -27,8 +39,10 @@ export class Form extends React.Component {
       .oneOf([yup.ref('password'), null], MSGS.passDifferents)
       .required(MSGS.required),
   }
+  elements: any;
+  static defaultProps: { url: string; method: string; wrapperProps: {}; elements: never[]; formRef: () => boolean; };
 
-  constructor(props) {
+  constructor(props: any) {
     super(props)
     this.state = {}
 
@@ -39,19 +53,19 @@ export class Form extends React.Component {
     this.elements = {}
   }
 
-  resultHandler = (status, data, cb, body) => {
+  resultHandler = (status: string, data: any, cb: Function, body: any) => {
     const { elements, onError } = this.props;
     if (status) {
       if (cb) cb({ body, data })
     }
     else {
-      let errors = {};
+      let errors: any = {};
       let onlyInputs = elements
 
       if (!data.message) {
-        errors = { [`${onlyInputs[0].name}Error`]: 'Ошибка' };
+        errors = { [`${onlyInputs && onlyInputs[0].name}Error`]: 'Ошибка' };
       } else if (typeof data.message === 'string') {
-        errors = { [`${onlyInputs[0].name}Error`]: data.message };
+        errors = { [`${onlyInputs && onlyInputs[0].name}Error`]: data.message };
       } else {
         Object.keys(data.message).map((name) => {
           errors[`${name}Error`] = data.message[name];
@@ -62,18 +76,19 @@ export class Form extends React.Component {
     }
   }
 
-  onSubmitNative = (e, cb, body) => {
+  onSubmitNative = (e: any, cb: Function, body: any) => {
     const { url, method } = this.props;
-    return Helpers.fetch({ url, method, body }, this.props.setPreloader)
+    const settings: any = { url, method, body }
+    return Helpers.fetch(settings, this.props.setPreloader)
       .then(({ status, data }) => this.resultHandler(status, data, cb, body));
   }
 
-  onSubmitAxios = async (e, cb, body) => {
-    const { url } = this.props;
+  onSubmitAxios = async (e: any, cb: Function, body: any) => {
+    const url: any = this.props.url;
     let formData = new FormData();
     Object.keys(body).forEach((name) => {
       if (name === 'images') {
-        body[name].forEach((img) => {
+        body[name].forEach((img: any) => {
           formData.append('files', {
             name: `${Helpers.randomKey(10)}.jpg`,
             type: 'image/jpeg',
@@ -82,7 +97,7 @@ export class Form extends React.Component {
         });
       }
       else {
-        let element = this.props.elements.find(element => element.name === name);
+        let element = this.props.elements?.find(element => element.name === name);
         let value = body[name];
         if (element.beforeSendFormatter) {
           value = element.beforeSendFormatter(value)
@@ -105,13 +120,13 @@ export class Form extends React.Component {
     return result
   }
 
-  getValue = (name) => {
+  getValue = (name: string | number) => {
     return this.elements[name].getValue()
   }
 
-  onSubmit = async (e, cb) => {
+  onSubmit = async (e: any, cb: Function) => {
     const request = this.props.requestType === 'axios' ? this.onSubmitAxios : this.onSubmitNative;
-    let body = {};
+    let body: any = {};
     let isValid = true;
     Object.keys(this.elements).forEach((element: string) => {
       if (element && this.elements[element]) {
@@ -136,10 +151,10 @@ export class Form extends React.Component {
     }
   };
 
-  reset = (fieldNames = []) => {
+  reset = (fieldNames: string[] = []) => {
     let elements = Object.keys(this.elements)
     if (fieldNames && fieldNames.length) {
-      elements = elements.filter((name) => fieldNames.indexOf(name) !== -1)
+      elements = elements.filter((name: string) => fieldNames?.indexOf(name) !== -1)
     }
 
     elements.forEach((name => {
@@ -147,10 +162,10 @@ export class Form extends React.Component {
     }))
   }
 
-  clear = (fieldNames = []) => {
+  clear = (fieldNames: string[] = []) => {
     let elements = Object.keys(this.elements)
     if (fieldNames && fieldNames.length) {
-      elements = elements.filter((name) => fieldNames.indexOf(name) !== -1)
+      elements = elements.filter((name: string) => fieldNames?.indexOf(name) !== -1)
     }
 
     elements.forEach((name => {
@@ -159,7 +174,7 @@ export class Form extends React.Component {
   }
 
 
-  update = (fieldNames = {}) => {
+  update = (fieldNames: any = {}) => {
     if (fieldNames) {
       Object.keys(fieldNames).forEach(name => {
         this.elements[name].update(fieldNames[name])
@@ -172,17 +187,18 @@ export class Form extends React.Component {
 
     return (
       <View {...wrapperProps}>
-        {elements.map((element, key) => {
-          const _element = {
+        {elements?.map((element, key) => {
+          const _state: any = this.state;
+          const _element: any = {
             ...element,
-            externalError: this.state[`${element.name}Error`]
+            externalError: _state[`${element.name}Error`]
           }
           return <Element
             element={_element}
             getElements={() => this.elements}
             key={key}
             onSubmit={this.onSubmit}
-            _ref={(name, elementInstance) => this.elements[name] = elementInstance}
+            _ref={(name: any, elementInstance: any) => this.elements[name] = elementInstance}
             {..._element}
           />
         })}
@@ -199,8 +215,4 @@ Form.defaultProps = {
   formRef: () => false
 }
 
-export default connect(undefined, (dispatch) => ({
-  setPreloader(alert) {
-    dispatch(setPreloader(alert));
-  },
-}))(Form)
+export default connect(undefined, (dispatch) => bindActionCreators({ setPreloader }, dispatch))(Form)

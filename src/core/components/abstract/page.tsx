@@ -12,13 +12,28 @@ import Alert from '@core/components/base/alert';
 import Select from '@core/components/base/select';
 import ImageViewer from '@core/components/base/imageViewer'
 
-export class Page extends React.Component {
-  constructor(props) {
+interface GLOBAL {
+  setPreloader: any
+}
+declare const global: GLOBAL;
+
+export interface _P {
+  history: any
+  setPreloader: Function
+  preloader: any
+  alert: any
+  popupMenu: any
+  select: any
+  imageViewer: any
+}
+
+export class Page<P extends _P, S> extends React.Component<P, S> {
+  constructor(props: any) {
     super(props)
     global.setPreloader = props.setPreloader;
   }
 
-  static mapStateToProps = (state, customState) => ({
+  static mapStateToProps = (state: any, customState: any) => ({
     preloader: state.preloader,
     alert: state.alert,
     popupMenu: state.popupMenu,
@@ -27,36 +42,38 @@ export class Page extends React.Component {
     ...customState
   })
 
-  static mapDispatchToProps = (dispatch, customActions) => bindActionCreators({
-    setPreloader,
-    setAlert,
-    setPopupMenu,
-    setSelect,
-    setImageViewer,
-    ...customActions
-  }, dispatch)
+  static mapDispatchToProps = (dispatch: any, customActions: any) => {
+    const actions: any = {
+      setPreloader,
+      setAlert,
+      setPopupMenu,
+      setSelect,
+      setImageViewer,
+      ...customActions
+    }
 
-  state = {}
+    return bindActionCreators(actions, dispatch)
+  }
 
   back = () => this.props.history?.goBack()
 
-  go = (path) => this.props.history?.push(path)
+  go = (path: string) => this.props.history?.push(path)
 
-  fetch = async (data) => {
+  fetch = async (data: any) => {
     let { setPreloader } = this.props;
     if (typeof setPreloader !== 'function') {
       if (setPreloader !== false) {
         console.warn(
-          'setPreloader not found in redux store. Maybe you forgot to connect the storage to the page',
+          'setPreloader not found in redux store. Maybe you forgot to connect the storage to the page'
         );
       }
-      setPreloader = () => { };
+      setPreloader = () => { }
     }
 
     return await Helpers.fetch(data, setPreloader);
   };
 
-  _render = (childs, _style, _TESTID) => {
+  _render = (childs: any, _style?: any, _TESTID?: string) => {
     const { preloader, alert, popupMenu, select, imageViewer } = this.props;
     return (
       <>
@@ -65,7 +82,7 @@ export class Page extends React.Component {
         {!!alert && <Alert />}
         {!!popupMenu && <PopupMenu />}
         {!!select && <Select />}
-       <ImageViewer />
+        <ImageViewer />
       </>
     );
   };
