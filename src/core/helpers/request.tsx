@@ -7,7 +7,7 @@ type Method = "POST" | "GET";
 export interface RequestConfigInterface {
   method: Method,
   url: string,
-  body: object,
+  body: any,
   ignoreDisablePreloader: boolean,
 }
 

@@ -3,7 +3,7 @@ import Network from "@core/mixins/network";
 export interface PropsModel {
   id?: number,
   onLoad?: Function | undefined,
-  data?: object | undefined,
+  data?: any | undefined,
 }
 
 export class Model extends Network() {
@@ -19,6 +19,11 @@ export class Model extends Network() {
     this.id = props?.id;
     this.data = props?.data;
     this.onLoad = props?.onLoad
+
+    return this.init();
+  }
+
+  async init(props?: PropsModel) {
     return new Promise(async (resolve) => {
       if (props?.id && !props?.data) {
         await this.load()
