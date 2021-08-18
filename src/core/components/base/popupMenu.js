@@ -112,21 +112,23 @@ function RenderPopupMenu({
                     ])}
                     onPress={() => _onPress(button)}
                   >
-                    <View style={tailwind('flex-row items-center')}>
-                      {!!button.icon &&
-                        <View style={tailwind('mr-3 items-end h-5')}>
-                          <Icon
-                            name={button.icon}
-                            style={tailwind('text-blue')}
-                            size={20}
-                          />
-                        </View>}
-                      <View>
-                        <Text style={tailwind('text-blue text-lg')}>
-                          {button.title}
-                        </Text>
+                    {() => (
+                      <View style={tailwind('flex-row items-center')}>
+                        {!!button.icon &&
+                          <View style={tailwind('mr-3 items-end h-5')}>
+                            <Icon
+                              name={button.icon}
+                              style={tailwind('text-blue')}
+                              size={20}
+                            />
+                          </View>}
+                        <View>
+                          <Text style={tailwind('text-blue text-lg')}>
+                            {button.title}
+                          </Text>
+                        </View>
                       </View>
-                    </View>
+                    )}
                   </Button>
                 </View>
               ))}
