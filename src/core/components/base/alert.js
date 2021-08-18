@@ -194,9 +194,11 @@ function AlertRender({ alert, closing, close, setAlert }) {
                     onPress={() => _onPress(button)}
                     style={Helpers.setClasses([tailwind('p-4 w-full')])}
                   >
-                    <Text style={Helpers.setClasses([button.style])}>
-                      {button.text}
-                    </Text>
+                    {() => (
+                      <Text style={Helpers.setClasses([button.style])}>
+                        {button.text}
+                      </Text>
+                    )}
                   </Button>
                 </View>
               );
