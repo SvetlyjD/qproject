@@ -3,6 +3,11 @@ var fs = require('fs');
 var dirDownload = './download';
 const appConfig = require('../src/configs/app.json');
 
+if (!appConfig?.name) {
+    console.log(`src/configs/app.json or field name in app.json not found.`);
+    return;
+}
+
 const { DOWNLOADPATH, BUNDLEID } = process.env;
 
 fs.readdir(dirDownload, {}, (err, files) => {
@@ -13,7 +18,9 @@ fs.readdir(dirDownload, {}, (err, files) => {
 
         if (!apkIsExist) console.log(`${appConfig.name}.apk not found.`);
         if (!ipaIsExist) console.log(`${appConfig.name}.ipa not found.`);
-        if (!apkIsExist || !ipaIsExist) return;
+        if (!DOWNLOADPATH) console.log(`DOWNLOADPATH in .env not found.`);
+        if (!BUNDLEID) console.log(`BUNDLEID in .env not found.`);
+        if (!apkIsExist || !ipaIsExist || !DOWNLOADPATH || !BUNDLEID) return;
 
         fs.writeFileSync(dirDownload + '/index.html', indexHtml())
         fs.writeFileSync(dirDownload + '/app.plist', applist())
