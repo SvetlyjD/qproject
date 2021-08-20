@@ -141,12 +141,20 @@ function RenderPopupMenu({
 }
 
 export class PopupMenu extends Animated {
+  setPopupMenu = (popupMenu) => {
+    const { setIsOpen, setPopupMenu } = this.props;
+    (setIsOpen || setPopupMenu)(popupMenu)
+  }
+
+  getPopupMenu = () => {
+    const { isOpen, popupMenu } = this.props;
+    return isOpen !== undefined ? isOpen : popupMenu
+  }
+
   render() {
     const { closing } = this.state;
 
-    const {
-      popupMenu: { groups },
-    } = this.props;
+    const { groups, onPressOverlay } = this.getPopupMenu();
     let _groups = [
       ...groups,
       {
@@ -161,8 +169,8 @@ export class PopupMenu extends Animated {
 
     return (
       <RenderPopupMenu
-        onPressOverlay={this.props.popupMenu.onPressOverlay}
-        setPopupMenu={this.props.setPopupMenu}
+        onPressOverlay={onPressOverlay}
+        setPopupMenu={this.setPopupMenu}
         close={this.close}
         closing={closing}
         _groups={_groups}

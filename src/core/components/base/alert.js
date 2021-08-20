@@ -211,13 +211,23 @@ function AlertRender({ alert, closing, close, setAlert }) {
 }
 
 export class Alert extends Animated {
+  setAlert = (alert) => {
+    const { setIsOpen, setAlert } = this.props;
+    (setIsOpen || setAlert)(alert)
+  }
+
+  getAlert = () => {
+    const { isOpen, alert } = this.props;
+    return isOpen !== undefined ? isOpen : alert
+  }
+  
   render() {
     return (
       <AlertRender
-        alert={this.props.alert}
+        alert={this.getAlert()}
         closing={this.state.closing}
         close={this.close}
-        setAlert={this.props.setAlert}
+        setAlert={this.setAlert}
       />
     );
   }

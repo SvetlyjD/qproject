@@ -18,9 +18,8 @@ const TAILWINDPX = 4,
   },
   CLASSES = {
     scroll: `h-${(STEPHEIGHT / TAILWINDPX) * 4 + TAILWINDPX * 2}`,
-    innerScroll: `pt-${(STEPHEIGHT / TAILWINDPX) * 2} pb-${
-      (STEPHEIGHT / TAILWINDPX) * 2
-    }`,
+    innerScroll: `pt-${(STEPHEIGHT / TAILWINDPX) * 2} pb-${(STEPHEIGHT / TAILWINDPX) * 2
+      }`,
     item: `h-${STEPHEIGHT / TAILWINDPX}`,
   };
 
@@ -41,12 +40,22 @@ export class Select extends Animated {
     super(props);
     this.state = {
       ...this.state,
-      active: props.select.defaultValue || 0,
+      active: this.getSelect(props).defaultValue || 0,
       state: STATES.none,
     };
-    if (props.select.defaultValue) {
+    if (this.getSelect(props).defaultValue) {
       this.STEP = props.select.defaultValue;
     }
+  }
+
+  setSelect = (select) => {
+    const { setIsOpen, setSelect } = this.props;
+    (setIsOpen || setSelect)(select)
+  }
+
+  getSelect = (props) => {
+    const { isOpen, select } = props;
+    return isOpen !== undefined ? isOpen : select
   }
 
   componentDidMount() {
@@ -62,7 +71,7 @@ export class Select extends Animated {
 
   getStep = (y) => Math.round(y / STEPHEIGHT);
 
-  setStep = (y, cb = () => {}) => {
+  setStep = (y, cb = () => { }) => {
     this.STEP = this.getStep(y);
     this.setState({ active: this.STEP }, cb);
   };
@@ -98,13 +107,13 @@ export class Select extends Animated {
 
   closeModal = () => {
     this.close(() => {
-      this.props.setSelect(false);
+      this.setSelect(false);
     });
   };
 
   applyModal = () => {
     const { active } = this.state;
-    const { select } = this.props;
+    const select = this.getSelect(this.props);
     if (select && select.onChange && typeof select.onChange === 'function') {
       select.onChange(select.list[active], active);
     }
@@ -117,7 +126,7 @@ export class Select extends Animated {
 
   render() {
     const { active, closing } = this.state;
-    const { select } = this.props;
+    const select = this.getSelect(this.props);
 
     return (
       <Themed
@@ -217,14 +226,14 @@ export class Select extends Animated {
                                 [
                                   { transform: [{ rotateX: '60deg' }] },
                                   !(key - 1 === active) &&
-                                    !(key + 1 === active) &&
-                                    key < active,
+                                  !(key + 1 === active) &&
+                                  key < active,
                                 ],
                                 [
                                   { transform: [{ rotateX: '-60deg' }] },
                                   !(key - 1 === active) &&
-                                    !(key + 1 === active) &&
-                                    key > active,
+                                  !(key + 1 === active) &&
+                                  key > active,
                                 ],
                               ],
                             )}
