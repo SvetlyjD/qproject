@@ -3,23 +3,25 @@ var fs = require('fs');
 var dirDownload = './download';
 const appConfig = require('../src/configs/app.json');
 
-const { DOWNLOADPATH, IPABUNDLEID } = process.env;
+const { DOWNLOADPATH, BUNDLEID } = process.env;
 
 fs.readdir(dirDownload, {}, (err, files) => {
-  if (err) console.log('err', err)
-  else {
-    if (files.indexOf(appConfig.name + ".apk") === -1 || files.indexOf(appConfig.name + ".ipa") === -1) {
-      console.log('Apk or ipa file does not exist');
-      return;
-    }
+    if (err) console.log('err', err)
+    else {
+        const apkIsExist = files.indexOf(`${appConfig.name}.apk`) !== -1
+        const ipaIsExist = files.indexOf(`${appConfig.name}.ipa`) !== -1
 
-    fs.writeFileSync(dirDownload + '/index.html', indexHtml());
-    fs.writeFileSync(dirDownload + '/app.plist', applist());
-  }
+        if (!apkIsExist) console.log(`${appConfig.name}.apk not found.`);
+        if (!ipaIsExist) console.log(`${appConfig.name}.ipa not found.`);
+        if (!apkIsExist || !ipaIsExist) return;
+
+        fs.writeFileSync(dirDownload + '/index.html', indexHtml())
+        fs.writeFileSync(dirDownload + '/app.plist', applist())
+    }
 })
 
 const indexHtml = () => {
-  return `
+    return `
   <!DOCTYPE html>
   <html lang="en" class="ios device-pixel-ratio-1 device-desktop device-windows support-position-sticky">
 
@@ -93,7 +95,7 @@ const indexHtml = () => {
 }
 
 const applist = () => {
-  return `
+    return `
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
@@ -113,7 +115,7 @@ const applist = () => {
                 <key>metadata</key>
                 <dict>
                     <key>bundle-identifier</key>
-                    <string>${IPABUNDLEID}</string>
+                    <string>${BUNDLEID}</string>
                     <key>bundle-version</key>
                     <string>1.0</string>
                     <key>kind</key>
