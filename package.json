@@ -8,7 +8,8 @@
     "start": "npm run-script generate-config && npm run-script generate-routes && npm run-script generate-redux && react-native start",
     "generate-config": "node ./scripts/generateConfig.js",
     "generate-routes": "node ./scripts/generateRoutes.js",
-    "generate-redux": "node ./scripts/generateRedux.js"
+    "generate-redux": "node ./scripts/generateRedux.js",
+    "generate-download": "node ./scripts/generateDownload.js"
   },
   "dependencies": {
     "@eva-design/eva": "^2.1.0",

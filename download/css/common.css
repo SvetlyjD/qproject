@@ -1,0 +1,167 @@
+.app-icon.ios6 {
+    display: block;
+    width: 57px;
+    height: 57px;
+    background-size: 57px 57px;
+    border-radius: 11px;
+    box-shadow: rgba(0, 0, 0, .33) 0px 2px 5px
+}
+
+.app-icon.ios6 .gloss {
+    background-color: transparent;
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
+    height: 30px;
+    width: 57px;
+    position: relative;
+    border-top-left-radius: 38px;
+    border-top-right-radius: 38px;
+    border-bottom-left-radius: 120px 20px;
+    border-bottom-right-radius: 100px 20px;
+    z-index: 5;
+    box-shadow: rgba(255, 255, 255, .5) 0 2px 1px inset
+}
+
+.app-icon.ios7 {
+    display: block;
+    width: 57px;
+    height: 57px;
+    background-size: 57px 57px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, .25) 0px 0px 5px
+}
+
+.app-icon.android {
+    display: block;
+    width: 57px;
+    height: 57px;
+    background-size: 57px 57px
+}
+
+.app-icon.mac {
+    display: block;
+    width: 57px;
+    height: 57px;
+    background-size: 57px 57px
+}
+
+.view-left {
+    border-right: 1px solid #d2d2d2
+}
+
+.theme-dark .view-left {
+    border-right: 1px solid #424242
+}
+
+@media(min-width: 769px) {
+    .panel.panel-left.panel-cover {
+        width: 320px
+    }
+    .view-main .navbar .panel-open {
+        display: none
+    }
+}
+
+@media(max-width: 569px) {
+    .item-inner.long {
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        box-orient: vertical;
+        -webkit-box-direction: normal;
+        -moz-box-direction: normal;
+        box-direction: normal;
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-direction: column;
+        -webkit-box-align: left;
+        -moz-box-align: left;
+        box-align: left;
+        -webkit-align-items: left;
+        -moz-align-items: left;
+        -ms-align-items: left;
+        -o-align-items: left;
+        align-items: left;
+        -ms-flex-align: left
+    }
+    .item-inner.long .item-title {
+        display: block;
+        text-align: left;
+        width: 100%
+    }
+    .item-inner.long .item-after {
+        margin-left: 0;
+        display: block;
+        text-align: right;
+        width: 100%
+    }
+    .item-inner.long .item-after.small {
+        font-size: 15px
+    }
+    .item-inner.long .item-after.smaller {
+        font-size: 13px
+    }
+}
+
+@media(min-width: 768px) {
+    .list.tablet-inset .list-group ul {
+        overflow: hidden;
+        margin: 10px 0
+    }
+}
+
+#last-links .clear,
+#last-pages .clear {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size: 14px
+}
+
+#last-links .item-title,
+#last-links .item-after,
+#last-pages .item-title,
+#last-pages .item-after {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    max-width: 50%
+}
+
+#flashmessages {
+    display: none
+}
+
+.ios .toast.flash-type-success {
+    background-color: rgba(0, 170, 0, .65)
+}
+
+.ios .toast.flash-type-error {
+    background-color: rgba(170, 0, 0, .65)
+}
+
+.md .toast.flash-type-success {
+    background-color: #0a0
+}
+
+.md .toast.flash-type-error {
+    background-color: #a00
+}
+
+p {
+    word-break: break-word
+}
+
+.ios .list .item-link.install .item-inner {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D'8px'%20height%3D'13px'%20viewBox%3D'0%200%208%2013'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpolygon%20fill%3D'%23007aff'%20transform%3D'translate(1.500000%2C%206.500000)%20rotate(-45.000000)%20translate(-1.500000%2C%20-6.500000)%20'%20points%3D'6%2011%206%202%204%202%204%209%20-3%209%20-3%2011%205%2011'%3E%3C%2Fpolygon%3E%3C%2Fsvg%3E")
+}
+
+.md .list .item-link.install .item-inner {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D'8px'%20height%3D'13px'%20viewBox%3D'0%200%208%2013'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpolygon%20fill%3D'%23007aff'%20transform%3D'translate(1.500000%2C%206.500000)%20rotate(-45.000000)%20translate(-1.500000%2C%20-6.500000)%20'%20points%3D'6%2011%206%202%204%202%204%209%20-3%209%20-3%2011%205%2011'%3E%3C%2Fpolygon%3E%3C%2Fsvg%3E")
+}
+
+
+/*# sourceMappingURL=common.css.map */
