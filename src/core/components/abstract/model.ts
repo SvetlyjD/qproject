@@ -21,12 +21,14 @@ export class Model<Entity extends EntityBase> extends Network() {
   data?: Entity
   #getExternalStore?: Function;
 
-  constructor(props?: PropsModel<Entity >) {
+  constructor(props?: PropsModel<Entity>) {
     super();
     if (props) {
-      this.id = props.data[props.data?.id_field]
-      this.data = props.data
-      this.data?.id = this.id;
+      if (props.data) {
+        this.id = props.data[props.data?.id_field]
+        this.data = props.data
+        this.data.id = this.id;
+      }
       this.onLoad = props.onLoad
       this.#getExternalStore = props.getExternalStore
     }
