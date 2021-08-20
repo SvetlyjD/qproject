@@ -1,13 +1,16 @@
 import Log from "@core/helpers/log";
 import Network from "@core/mixins/network";
+import EntityBase from "./entity";
 
-export interface PropsModel {
-  id?: number,
-  onLoad?: Function | undefined,
-  data?: any | undefined,
+export interface PropsModel<Entity extends EntityBase> {
+  id?: number
+  onInit?: Function
+  onLoad?: Function
+  getExternalStore?: () => any
+  data?: Entity
 }
 
-export class Model extends Network() {
+export class Model<Entity extends EntityBase> extends Network() {
   get config(): any {
     return {};
   }
@@ -15,16 +18,34 @@ export class Model extends Network() {
     return false;
   }
 
-  constructor(props?: PropsModel) {
-    super();
-    this.id = props?.id;
-    this.data = props?.data;
-    this.onLoad = props?.onLoad
+  data?: Entity
+  #getExternalStore?: Function;
 
-    this.init();
+  constructor(props?: PropsModel<Entity >) {
+    super();
+    if (props) {
+      this.id = props.data[props.data?.id_field]
+      this.data = props.data
+      this.data?.id = this.id;
+      this.onLoad = props.onLoad
+      this.#getExternalStore = props.getExternalStore
+    }
+
+    this.init(props).then(() => {
+      if (props?.onInit) {
+        props.onInit(this)
+      }
+    })
   }
 
-  async init(props?: PropsModel) {
+  getExternalStore() {
+    if (this.#getExternalStore) {
+      return this.#getExternalStore()
+    }
+    return {}
+  }
+
+  async init(props?: PropsModel<Entity>) {
     return new Promise(async (resolve) => {
       if (props?.id && !props?.data) {
         await this.load()
@@ -41,8 +62,8 @@ export class Model extends Network() {
     }
   }
 
-  async load() {
-    const response = await this.request(this.config.load);
+  async load(config: any = this.config.load) {
+    const response = await this.request(config);
     if (response.status) {
       this.data = response.data
     }
@@ -68,4 +89,4 @@ export class Model extends Network() {
   }
 }
 
-export default Model
+export default Model;
