@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '11.0'
 
-target 'testapp' do
+target 'q-digital-core' do
   config = use_native_modules!
 
   use_react_native!(
@@ -12,7 +12,9 @@ target 'testapp' do
     :hermes_enabled => false
   )
 
-  target 'testappTests' do
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
+  target 'q-digital-coreTests' do
     inherit! :complete
     # Pods for testing
   end
