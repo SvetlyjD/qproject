@@ -64,3 +64,4 @@ android/app/src/main/assets/index.android.bundle
 src/config/config.js
 .env
 /db
+ios/Podfile.lock

@@ -1,4 +1,4 @@
-package com.q-digital-core;
+package com.qdigitalcore;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "q-digital-core";
+    return "qdigitalcore";
   }
 }

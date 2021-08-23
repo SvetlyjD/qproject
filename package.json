@@ -1,5 +1,5 @@
 {
-  "name": "q-digital-core",
+  "name": "qdigitalcore",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,7 +9,8 @@
     "generate-config": "node ./scripts/generateConfig.js",
     "generate-routes": "node ./scripts/generateRoutes.js",
     "generate-redux": "node ./scripts/generateRedux.js",
-    "generate-download": "node ./scripts/generateDownload.js"
+    "generate-download": "node ./scripts/generateDownload.js",
+    "generate-project": "node ./scripts/generateProject.js"
   },
   "dependencies": {
     "@babel/core": "^7.15.0",
@@ -62,7 +63,6 @@
     "tailwind-rn": "^3.0.1",
     "typescript": "^3.8.3",
     "wd": "^1.13.0",
-    "wdio": "^4.0.0",
     "yup": "^0.32.9"
   },
   "resolutions": {
@@ -78,5 +78,8 @@
       "json",
       "node"
     ]
+  },
+  "devDependencies": {
+    "fs-extra": "^10.0.0"
   }
 }

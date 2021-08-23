@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.q-digital-core",
+    package = "com.qdigitalcore",
 )
 
 android_resource(
     name = "res",
-    package = "com.q-digital-core",
+    package = "com.qdigitalcore",
     res = "src/main/res",
 )
 

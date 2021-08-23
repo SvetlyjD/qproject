@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* q-digital-coreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* q-digital-coreTests.m */; };
+		00E356F31AD99517003FC87E /* qdigitalcoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* qdigitalcoreTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7839FEBD3EC65321AE35706A /* libPods-q-digital-core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B12409F0F56172CE4E55A79A /* libPods-q-digital-core.a */; };
+		7839FEBD3EC65321AE35706A /* libPods-qdigitalcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B12409F0F56172CE4E55A79A /* libPods-qdigitalcore.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		C7FF5C05E96DFB88F5D8AF33 /* libPods-q-digital-core-q-digital-coreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E2F7A74D25A5EA15798AA8 /* libPods-q-digital-core-q-digital-coreTests.a */; };
+		C7FF5C05E96DFB88F5D8AF33 /* libPods-qdigitalcore-qdigitalcoreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E2F7A74D25A5EA15798AA8 /* libPods-qdigitalcore-qdigitalcoreTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,27 +22,27 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = q-digital-core;
+			remoteInfo = qdigitalcore;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* q-digital-coreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = q-digital-coreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* qdigitalcoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qdigitalcoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* q-digital-coreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = q-digital-coreTests.m; sourceTree = "<group>"; };
-		02C64F751A833294E17437F9 /* Pods-q-digital-core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-q-digital-core.release.xcconfig"; path = "Target Support Files/Pods-q-digital-core/Pods-q-digital-core.release.xcconfig"; sourceTree = "<group>"; };
-		1326A91934127F4BB492040C /* Pods-q-digital-core-q-digital-coreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-q-digital-core-q-digital-coreTests.release.xcconfig"; path = "Target Support Files/Pods-q-digital-core-q-digital-coreTests/Pods-q-digital-core-q-digital-coreTests.release.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* q-digital-core.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = q-digital-core.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = q-digital-core/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = q-digital-core/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = q-digital-core/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = q-digital-core/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = q-digital-core/main.m; sourceTree = "<group>"; };
-		45E2F7A74D25A5EA15798AA8 /* libPods-q-digital-core-q-digital-coreTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-q-digital-core-q-digital-coreTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = q-digital-core/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AB9167B6336A25B6B690C270 /* Pods-q-digital-core-q-digital-coreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-q-digital-core-q-digital-coreTests.debug.xcconfig"; path = "Target Support Files/Pods-q-digital-core-q-digital-coreTests/Pods-q-digital-core-q-digital-coreTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B12409F0F56172CE4E55A79A /* libPods-q-digital-core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-q-digital-core.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA95D41E99F1F20C27928531 /* Pods-q-digital-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-q-digital-core.debug.xcconfig"; path = "Target Support Files/Pods-q-digital-core/Pods-q-digital-core.debug.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* qdigitalcoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qdigitalcoreTests.m; sourceTree = "<group>"; };
+		02C64F751A833294E17437F9 /* Pods-qdigitalcore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qdigitalcore.release.xcconfig"; path = "Target Support Files/Pods-qdigitalcore/Pods-qdigitalcore.release.xcconfig"; sourceTree = "<group>"; };
+		1326A91934127F4BB492040C /* Pods-qdigitalcore-qdigitalcoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qdigitalcore-qdigitalcoreTests.release.xcconfig"; path = "Target Support Files/Pods-qdigitalcore-qdigitalcoreTests/Pods-qdigitalcore-qdigitalcoreTests.release.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* qdigitalcore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qdigitalcore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = qdigitalcore/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = qdigitalcore/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = qdigitalcore/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = qdigitalcore/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = qdigitalcore/main.m; sourceTree = "<group>"; };
+		45E2F7A74D25A5EA15798AA8 /* libPods-qdigitalcore-qdigitalcoreTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qdigitalcore-qdigitalcoreTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = qdigitalcore/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AB9167B6336A25B6B690C270 /* Pods-qdigitalcore-qdigitalcoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qdigitalcore-qdigitalcoreTests.debug.xcconfig"; path = "Target Support Files/Pods-qdigitalcore-qdigitalcoreTests/Pods-qdigitalcore-qdigitalcoreTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B12409F0F56172CE4E55A79A /* libPods-qdigitalcore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qdigitalcore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA95D41E99F1F20C27928531 /* Pods-qdigitalcore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qdigitalcore.debug.xcconfig"; path = "Target Support Files/Pods-qdigitalcore/Pods-qdigitalcore.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7FF5C05E96DFB88F5D8AF33 /* libPods-q-digital-core-q-digital-coreTests.a in Frameworks */,
+				C7FF5C05E96DFB88F5D8AF33 /* libPods-qdigitalcore-qdigitalcoreTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,20 +59,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7839FEBD3EC65321AE35706A /* libPods-q-digital-core.a in Frameworks */,
+				7839FEBD3EC65321AE35706A /* libPods-qdigitalcore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* q-digital-coreTests */ = {
+		00E356EF1AD99517003FC87E /* qdigitalcoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* q-digital-coreTests.m */,
+				00E356F21AD99517003FC87E /* qdigitalcoreTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = q-digital-coreTests;
+			path = qdigitalcoreTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -86,16 +86,16 @@
 		0E56B6BBB2C6262EC234E9E4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EA95D41E99F1F20C27928531 /* Pods-q-digital-core.debug.xcconfig */,
-				02C64F751A833294E17437F9 /* Pods-q-digital-core.release.xcconfig */,
-				AB9167B6336A25B6B690C270 /* Pods-q-digital-core-q-digital-coreTests.debug.xcconfig */,
-				1326A91934127F4BB492040C /* Pods-q-digital-core-q-digital-coreTests.release.xcconfig */,
+				EA95D41E99F1F20C27928531 /* Pods-qdigitalcore.debug.xcconfig */,
+				02C64F751A833294E17437F9 /* Pods-qdigitalcore.release.xcconfig */,
+				AB9167B6336A25B6B690C270 /* Pods-qdigitalcore-qdigitalcoreTests.debug.xcconfig */,
+				1326A91934127F4BB492040C /* Pods-qdigitalcore-qdigitalcoreTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* q-digital-core */ = {
+		13B07FAE1A68108700A75B9A /* qdigitalcore */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -105,15 +105,15 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = q-digital-core;
+			name = qdigitalcore;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				B12409F0F56172CE4E55A79A /* libPods-q-digital-core.a */,
-				45E2F7A74D25A5EA15798AA8 /* libPods-q-digital-core-q-digital-coreTests.a */,
+				B12409F0F56172CE4E55A79A /* libPods-qdigitalcore.a */,
+				45E2F7A74D25A5EA15798AA8 /* libPods-qdigitalcore-qdigitalcoreTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,9 +128,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* q-digital-core */,
+				13B07FAE1A68108700A75B9A /* qdigitalcore */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* q-digital-coreTests */,
+				00E356EF1AD99517003FC87E /* qdigitalcoreTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				0E56B6BBB2C6262EC234E9E4 /* Pods */,
@@ -143,8 +143,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* q-digital-core.app */,
-				00E356EE1AD99517003FC87E /* q-digital-coreTests.xctest */,
+				13B07F961A680F5B00A75B9A /* qdigitalcore.app */,
+				00E356EE1AD99517003FC87E /* qdigitalcoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,9 +152,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* q-digital-coreTests */ = {
+		00E356ED1AD99517003FC87E /* qdigitalcoreTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "q-digital-coreTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "qdigitalcoreTests" */;
 			buildPhases = (
 				BC0FC32F4E8A04BF092B5989 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -168,14 +168,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = q-digital-coreTests;
-			productName = q-digital-coreTests;
-			productReference = 00E356EE1AD99517003FC87E /* q-digital-coreTests.xctest */;
+			name = qdigitalcoreTests;
+			productName = qdigitalcoreTests;
+			productReference = 00E356EE1AD99517003FC87E /* qdigitalcoreTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* q-digital-core */ = {
+		13B07F861A680F5B00A75B9A /* qdigitalcore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "q-digital-core" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "qdigitalcore" */;
 			buildPhases = (
 				712EE20BBC7D231D7F4F73B8 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -190,9 +190,9 @@
 			);
 			dependencies = (
 			);
-			name = q-digital-core;
-			productName = q-digital-core;
-			productReference = 13B07F961A680F5B00A75B9A /* q-digital-core.app */;
+			name = qdigitalcore;
+			productName = qdigitalcore;
+			productReference = 13B07F961A680F5B00A75B9A /* qdigitalcore.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -212,7 +212,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "q-digital-core" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "qdigitalcore" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -225,8 +225,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* q-digital-core */,
-				00E356ED1AD99517003FC87E /* q-digital-coreTests */,
+				13B07F861A680F5B00A75B9A /* qdigitalcore */,
+				00E356ED1AD99517003FC87E /* qdigitalcoreTests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,15 +271,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-q-digital-core/Pods-q-digital-core-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore/Pods-qdigitalcore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-q-digital-core/Pods-q-digital-core-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore/Pods-qdigitalcore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-q-digital-core/Pods-q-digital-core-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore/Pods-qdigitalcore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		712EE20BBC7D231D7F4F73B8 /* [CP] Check Pods Manifest.lock */ = {
@@ -297,7 +297,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-q-digital-core-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-qdigitalcore-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -310,15 +310,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-q-digital-core/Pods-q-digital-core-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore/Pods-qdigitalcore-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-q-digital-core/Pods-q-digital-core-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore/Pods-qdigitalcore-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-q-digital-core/Pods-q-digital-core-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore/Pods-qdigitalcore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BC0FC32F4E8A04BF092B5989 /* [CP] Check Pods Manifest.lock */ = {
@@ -336,7 +336,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-q-digital-core-q-digital-coreTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-qdigitalcore-qdigitalcoreTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -349,15 +349,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-q-digital-core-q-digital-coreTests/Pods-q-digital-core-q-digital-coreTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore-qdigitalcoreTests/Pods-qdigitalcore-qdigitalcoreTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-q-digital-core-q-digital-coreTests/Pods-q-digital-core-q-digital-coreTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore-qdigitalcoreTests/Pods-qdigitalcore-qdigitalcoreTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-q-digital-core-q-digital-coreTests/Pods-q-digital-core-q-digital-coreTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore-qdigitalcoreTests/Pods-qdigitalcore-qdigitalcoreTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FB93D6FEE3B9860992B83F3F /* [CP] Embed Pods Frameworks */ = {
@@ -366,15 +366,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-q-digital-core-q-digital-coreTests/Pods-q-digital-core-q-digital-coreTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore-qdigitalcoreTests/Pods-qdigitalcore-qdigitalcoreTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-q-digital-core-q-digital-coreTests/Pods-q-digital-core-q-digital-coreTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore-qdigitalcoreTests/Pods-qdigitalcore-qdigitalcoreTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-q-digital-core-q-digital-coreTests/Pods-q-digital-core-q-digital-coreTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qdigitalcore-qdigitalcoreTests/Pods-qdigitalcore-qdigitalcoreTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -403,7 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* q-digital-coreTests.m in Sources */,
+				00E356F31AD99517003FC87E /* qdigitalcoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +421,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* q-digital-core */;
+			target = 13B07F861A680F5B00A75B9A /* qdigitalcore */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -429,14 +429,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB9167B6336A25B6B690C270 /* Pods-q-digital-core-q-digital-coreTests.debug.xcconfig */;
+			baseConfigurationReference = AB9167B6336A25B6B690C270 /* Pods-qdigitalcore-qdigitalcoreTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = q-digital-coreTests/Info.plist;
+				INFOPLIST_FILE = qdigitalcoreTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,17 +450,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/q-digital-core.app/q-digital-core";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qdigitalcore.app/qdigitalcore";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1326A91934127F4BB492040C /* Pods-q-digital-core-q-digital-coreTests.release.xcconfig */;
+			baseConfigurationReference = 1326A91934127F4BB492040C /* Pods-qdigitalcore-qdigitalcoreTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = q-digital-coreTests/Info.plist;
+				INFOPLIST_FILE = qdigitalcoreTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -474,19 +474,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/q-digital-core.app/q-digital-core";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qdigitalcore.app/qdigitalcore";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA95D41E99F1F20C27928531 /* Pods-q-digital-core.debug.xcconfig */;
+			baseConfigurationReference = EA95D41E99F1F20C27928531 /* Pods-qdigitalcore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = q-digital-core/Info.plist;
+				INFOPLIST_FILE = qdigitalcore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -497,7 +497,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = q-digital-core;
+				PRODUCT_NAME = qdigitalcore;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -506,12 +506,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02C64F751A833294E17437F9 /* Pods-q-digital-core.release.xcconfig */;
+			baseConfigurationReference = 02C64F751A833294E17437F9 /* Pods-qdigitalcore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = q-digital-core/Info.plist;
+				INFOPLIST_FILE = qdigitalcore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -522,7 +522,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = q-digital-core;
+				PRODUCT_NAME = qdigitalcore;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -654,7 +654,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "q-digital-coreTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "qdigitalcoreTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -663,7 +663,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "q-digital-core" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "qdigitalcore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -672,7 +672,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "q-digital-core" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "qdigitalcore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
