@@ -194,9 +194,11 @@ function AlertRender({ alert, closing, close, setAlert }) {
                     onPress={() => _onPress(button)}
                     style={Helpers.setClasses([tailwind('p-4 w-full')])}
                   >
-                    <Text style={Helpers.setClasses([button.style])}>
-                      {button.text}
-                    </Text>
+                    {() => (
+                      <Text style={Helpers.setClasses([button.style])}>
+                        {button.text}
+                      </Text>
+                    )}
                   </Button>
                 </View>
               );
@@ -209,13 +211,23 @@ function AlertRender({ alert, closing, close, setAlert }) {
 }
 
 export class Alert extends Animated {
+  setAlert = (alert) => {
+    const { setIsOpen, setAlert } = this.props;
+    (setIsOpen || setAlert)(alert)
+  }
+
+  getAlert = () => {
+    const { isOpen, alert } = this.props;
+    return isOpen !== undefined ? isOpen : alert
+  }
+  
   render() {
     return (
       <AlertRender
-        alert={this.props.alert}
+        alert={this.getAlert()}
         closing={this.state.closing}
         close={this.close}
-        setAlert={this.props.setAlert}
+        setAlert={this.setAlert}
       />
     );
   }

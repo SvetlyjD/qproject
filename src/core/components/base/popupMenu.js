@@ -112,21 +112,23 @@ function RenderPopupMenu({
                     ])}
                     onPress={() => _onPress(button)}
                   >
-                    <View style={tailwind('flex-row items-center')}>
-                      {!!button.icon &&
-                        <View style={tailwind('mr-3 items-end h-5')}>
-                          <Icon
-                            name={button.icon}
-                            style={tailwind('text-blue')}
-                            size={20}
-                          />
-                        </View>}
-                      <View>
-                        <Text style={tailwind('text-blue text-lg')}>
-                          {button.title}
-                        </Text>
+                    {() => (
+                      <View style={tailwind('flex-row items-center')}>
+                        {!!button.icon &&
+                          <View style={tailwind('mr-3 items-end h-5')}>
+                            <Icon
+                              name={button.icon}
+                              style={tailwind('text-blue')}
+                              size={20}
+                            />
+                          </View>}
+                        <View>
+                          <Text style={tailwind('text-blue text-lg')}>
+                            {button.title}
+                          </Text>
+                        </View>
                       </View>
-                    </View>
+                    )}
                   </Button>
                 </View>
               ))}
@@ -139,12 +141,20 @@ function RenderPopupMenu({
 }
 
 export class PopupMenu extends Animated {
+  setPopupMenu = (popupMenu) => {
+    const { setIsOpen, setPopupMenu } = this.props;
+    (setIsOpen || setPopupMenu)(popupMenu)
+  }
+
+  getPopupMenu = () => {
+    const { isOpen, popupMenu } = this.props;
+    return isOpen !== undefined ? isOpen : popupMenu
+  }
+
   render() {
     const { closing } = this.state;
 
-    const {
-      popupMenu: { groups },
-    } = this.props;
+    const { groups, onPressOverlay } = this.getPopupMenu();
     let _groups = [
       ...groups,
       {
@@ -159,8 +169,8 @@ export class PopupMenu extends Animated {
 
     return (
       <RenderPopupMenu
-        onPressOverlay={this.props.popupMenu.onPressOverlay}
-        setPopupMenu={this.props.setPopupMenu}
+        onPressOverlay={onPressOverlay}
+        setPopupMenu={this.setPopupMenu}
         close={this.close}
         closing={closing}
         _groups={_groups}

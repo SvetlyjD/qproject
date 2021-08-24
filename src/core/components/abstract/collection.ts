@@ -1,31 +1,29 @@
-import Helpers from "@core/helpers";
 import Network from "@core/mixins/network";
-import Models from "@models"
 
 export interface PropsCollection {
   onLoad: Function | undefined,
-  externalConfig: object | undefined,
+  externalConfig: any | undefined,
 }
 export class Collection extends Network() {
-  get config() {
+  get config(): any {
     return {};
   }
-  get model() {
+  get model(): any {
     return false;
   }
   onLoad: Function | undefined;
-  public list: object = {};
-  public externalConfig: object | undefined;
+  list: any = {};
+  externalConfig: any | undefined;
 
-  constructor(props: PropsCollection) {
+  constructor(props?: PropsCollection) {
     super(props);
     this.onLoad = props?.onLoad;
     this.externalConfig = props?.externalConfig;
 
-    return this.init();
+    this.init(props);
   }
 
-  private async init() {
+  async init(props?: PropsCollection) {
     return new Promise(async (resolve: Function) => {
       if (this.model) {
         await this.load();
@@ -35,11 +33,11 @@ export class Collection extends Network() {
     });
   }
 
-  public async load() {
+  async load() {
     const response = await this.request(this.config.load);
     if (response.status && response.data?.length) {
       this.list = {};
-      await Promise.all(response.data.map((item) => {
+      await Promise.all(response.data.map((item: any) => {
         return new Promise(async (resolve) => {
           this.list[item.id] = await new this.model({ id: item.id, data: item });
           this.list[item.id].parent = this;
@@ -57,22 +55,22 @@ export class Collection extends Network() {
     return response;
   }
 
-  public add = async (data: any) => {
+  async add(data: any) {
     await this.request(this.config.add, data)
     this.load();
   }
 
-  public delete = async (id: number) => {
+  async delete(id: number) {
     await this.list[id].delete();
     this.load();
   }
 
-  public deleteMultiple = async (ids: number[]) => {
+  async deleteMultiple(ids: number[]) {
     await this.request(this.config.deleteMultiple, { ids })
     this.load();
   }
 
-  public render(...args: any[]) {
+  render(...args: any[]) {
     return Object.keys(this.list).map((id: any) => this.list[id].render(...args))
   }
 }
