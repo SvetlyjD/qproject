@@ -4,12 +4,16 @@ const fs = require('fs');
 const readdir = promisify(fs.readdir);
 const stat = promisify(fs.stat);
 const { move, copy, remove } = require('fs-extra')
+const exec = promisify(require('child_process').exec);
 require('node-env-file')('.env');
 
 const CORENAME = 'qdigitalcore';
+const packagePath = './package.json'
+const scriptPath = './scripts/generateProject.js'
 const { PROJECTNAME } = process.env;
 if (PROJECTNAME === 'PROJECTNAME') throw new Error('Change your PROJECTNAME in .env file');
-
+let SCRIPTBACKUP = '';
+let PACKAGEBACKUP = '';
 const BLACKLIST = [
   '.git',
   'node_modules',
@@ -45,6 +49,12 @@ function counter(count = 0, length, process = () => { }, cb = () => { }) {
 }
 
 async function generate(dir) {
+  fs.readFile(packagePath, 'utf8', function (err, data) {
+    PACKAGEBACKUP = data;
+    fs.readFile(scriptPath, 'utf8', function (err, data) {
+      SCRIPTBACKUP = data;
+    })
+  })
   let files = (await getFiles(dir)).filter(file => file.indexOf(CORENAME) !== -1)
   if (files.length === 0) return console.log('Initialization was done earlier')
   counter(0, files.length, (count, next = () => { }) => {
@@ -106,6 +116,18 @@ async function generate(dir) {
         }
       }, () => {
         console.log('All matches in the files have been replaced. Total: ' + changingCount)
+        fs.readFile(packagePath, 'utf8', function (err, data) {
+          const reg = new RegExp(/,\n\s\s\s\s\"generate-project\"\: \"node \.\/scripts\/generateProject\.js\"/)
+          data = data.replace(reg, '')
+          fs.writeFile(packagePath, data, 'utf8', function (err) {
+            remove(scriptPath, async () => {
+              await exec(`git checkout -b ${PROJECTNAME}`)
+              await exec('git add .')
+              await exec(`git commit -m 'settings'`)
+              console.log('Done')
+            })
+          })
+        })
       })
     })
   })
