@@ -3,32 +3,32 @@ var fs = require('fs');
 var dirDownload = './download';
 const appConfig = require('../src/configs/app.json');
 
-if (!appConfig?.name) {
-    console.log(`src/configs/app.json or field name in app.json not found.`);
-    return;
+if (!appConfig || !appConfig.name) {
+  console.log(`src/configs/app.json or field name in app.json not found.`);
+  return;
 }
 
 const { DOWNLOADPATH, BUNDLEID } = process.env;
 
 fs.readdir(dirDownload, {}, (err, files) => {
-    if (err) console.log('err', err)
-    else {
-        const apkIsExist = files.indexOf(`${appConfig.name}.apk`) !== -1
-        const ipaIsExist = files.indexOf(`${appConfig.name}.ipa`) !== -1
+  if (err) console.log('err', err)
+  else {
+    const apkIsExist = files.indexOf(`${appConfig.name}.apk`) !== -1
+    const ipaIsExist = files.indexOf(`${appConfig.name}.ipa`) !== -1
 
-        if (!apkIsExist) console.log(`${appConfig.name}.apk not found.`);
-        if (!ipaIsExist) console.log(`${appConfig.name}.ipa not found.`);
-        if (!DOWNLOADPATH) console.log(`DOWNLOADPATH in .env not found.`);
-        if (!BUNDLEID) console.log(`BUNDLEID in .env not found.`);
-        if (!apkIsExist || !ipaIsExist || !DOWNLOADPATH || !BUNDLEID) return;
+    if (!apkIsExist) console.log(`${appConfig.name}.apk not found.`);
+    if (!ipaIsExist) console.log(`${appConfig.name}.ipa not found.`);
+    if (!DOWNLOADPATH || DOWNLOADPATH === 'https://DOWNLOADPATH') console.log(`DOWNLOADPATH in .env not found.`);
+    if (!BUNDLEID || BUNDLEID === 'com.q-digital.BUNDLEID') console.log(`BUNDLEID in .env not found.`);
+    if (!apkIsExist || !ipaIsExist || (!DOWNLOADPATH || DOWNLOADPATH === 'https://DOWNLOADPATH') || (!BUNDLEID || BUNDLEID === 'com.q-digital.BUNDLEID')) return;
 
-        fs.writeFileSync(dirDownload + '/index.html', indexHtml())
-        fs.writeFileSync(dirDownload + '/app.plist', applist())
-    }
+    fs.writeFileSync(dirDownload + '/index.html', indexHtml())
+    fs.writeFileSync(dirDownload + '/app.plist', applist())
+  }
 })
 
 const indexHtml = () => {
-    return `
+  return `
   <!DOCTYPE html>
   <html lang="en" class="ios device-pixel-ratio-1 device-desktop device-windows support-position-sticky">
 
@@ -102,7 +102,7 @@ const indexHtml = () => {
 }
 
 const applist = () => {
-    return `
+  return `
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">

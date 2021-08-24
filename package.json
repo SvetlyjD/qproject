@@ -5,6 +5,8 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "ios-archive": "cd ios && xcodebuild -workspace qdigitalcore.xcworkspace clean archive -scheme qdigitalcore -configuration Release -archivePath ../builds/ios/qdigitalcore.xcarchive",
+    "ios-export": "cd ios && xcodebuild -exportArchive -archivePath ../builds/ios/qdigitalcore.xcarchive -exportPath ../builds/ios/ -exportOptionsPlist ./iosExportOptions.plist",
     "start": "npm run-script generate-config && npm run-script generate-routes && npm run-script generate-redux && react-native start",
     "generate-config": "node ./scripts/generateConfig.js",
     "generate-routes": "node ./scripts/generateRoutes.js",
