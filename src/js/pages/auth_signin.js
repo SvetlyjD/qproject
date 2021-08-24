@@ -16,49 +16,51 @@ export class AuthSignin extends Page {
   constructor(_props) {
     super(_props);
 
-    this.state.elements = [
-      {
-        validation: Form.Validation.email,
-        elementType: Form.BaseElementTypes.Input,
-        label: 'E-mail',
-        status: 'control',
-        placeholder: 'mail@mail.ru',
-        name: 'email',
-      },
-      {
-        elementType: Form.BaseElementTypes.password,
-        validation: Form.Validation.password,
-        elementType: Form.BaseElementTypes.Password,
-        textStyle: tailwind('pr-12'),
-        status: 'control',
-        name: 'password',
-        style: tailwind('mt-4'),
-      },
-      {
-        elementType: Form.BaseElementTypes.Button,
-        title: 'Забыли пароль?',
-        style: tailwind('px-0 ml-auto mb-4'),
-        appearance: "ghost",
-        status: "control",
-        onPress: () => this.go(Routes.auth.restore)
-      },
-      {
-        elementType: Form.BaseElementTypes.Submit,
-        title: 'Войти',
-        style: tailwind('mt-auto'),
-        status: "control",
-        size: "giant",
-        onPress: this.onSubmit
-      },
-      {
-        elementType: Form.BaseElementTypes.Button,
-        title: 'У меня еще нет аккаунта',
-        style: tailwind('mx-4 my-3'),
-        status: "control",
-        appearance: "ghost",
-        onPress: () => this.go(Routes.auth.signup)
-      },
-    ];
+    this.state = {
+      elements: [
+        {
+          validation: Form.Validation.email,
+          elementType: Form.BaseElementTypes.Input,
+          label: 'E-mail',
+          status: 'control',
+          placeholder: 'mail@mail.ru',
+          name: 'email',
+        },
+        {
+          elementType: Form.BaseElementTypes.password,
+          validation: Form.Validation.password,
+          elementType: Form.BaseElementTypes.Password,
+          textStyle: tailwind('pr-12'),
+          status: 'control',
+          name: 'password',
+          style: tailwind('mt-4'),
+        },
+        {
+          elementType: Form.BaseElementTypes.Button,
+          title: 'Забыли пароль?',
+          style: tailwind('px-0 ml-auto mb-4'),
+          appearance: "ghost",
+          status: "control",
+          onPress: () => this.go(Routes.auth.restore)
+        },
+        {
+          elementType: Form.BaseElementTypes.Submit,
+          title: 'Войти',
+          style: tailwind('mt-auto'),
+          status: "control",
+          size: "giant",
+          onPress: this.onSubmit
+        },
+        {
+          elementType: Form.BaseElementTypes.Button,
+          title: 'У меня еще нет аккаунта',
+          style: tailwind('mx-4 my-3'),
+          status: "control",
+          appearance: "ghost",
+          onPress: () => this.go(Routes.auth.signup)
+        },
+      ]
+    };
   }
 
   onSubmit = ({ data }) => {
