@@ -3,13 +3,13 @@ const { resolve } = require('path');
 const fs = require('fs');
 const readdir = promisify(fs.readdir);
 const stat = promisify(fs.stat);
-const { move, copy, remove } = require('fs-extra')
+const { copy, remove } = require('fs-extra')
 const exec = promisify(require('child_process').exec);
 require('node-env-file')('.env');
 
 const CORENAME = 'qdigitalcore';
 const packagePath = './package.json'
-const scriptPath = './scripts/generateProject.js'
+const scriptPath = './scripts/generate/project.js'
 const { PROJECTNAME } = process.env;
 if (PROJECTNAME === 'PROJECTNAME') throw new Error('Change your PROJECTNAME in .env file');
 let SCRIPTBACKUP = '';
@@ -117,7 +117,7 @@ async function generate(dir) {
       }, () => {
         console.log('All matches in the files have been replaced. Total: ' + changingCount)
         fs.readFile(packagePath, 'utf8', function (err, data) {
-          const reg = new RegExp(/,\n\s\s\s\s\"generate-project\"\: \"node \.\/scripts\/generateProject\.js\"/)
+          const reg = new RegExp(/,\n\s\s\s\s\"generate-project\"\: \"node \.\/scripts\/generate\/project\.js\"/)
           data = data.replace(reg, '')
           fs.writeFile(packagePath, data, 'utf8', function (err) {
             remove(scriptPath, async () => {

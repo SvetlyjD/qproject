@@ -1,7 +1,7 @@
 require('node-env-file')('.env');
 var fs = require('fs');
 var dirConf = './src/core/generated'
-var initialState = require('../src/configs/reduxInitialState.js');
+var initialState = require('../../src/configs/reduxInitialState.js'); // thats path fix for bash script exec
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);

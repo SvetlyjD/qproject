@@ -1,0 +1,1 @@
+# You only need to execute scripts from the root folder of the project!

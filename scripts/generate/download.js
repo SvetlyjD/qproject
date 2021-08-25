@@ -1,26 +1,20 @@
 require('node-env-file')('.env');
 var fs = require('fs');
 var dirDownload = './download';
-const appConfig = require('../src/configs/app.json');
 
-if (!appConfig || !appConfig.name) {
-  console.log(`src/configs/app.json or field name in app.json not found.`);
-  return;
-}
-
-const { DOWNLOADPATH, BUNDLEID } = process.env;
+const { DOWNLOADPATH, BUNDLEID, PROJECTNAME } = process.env;
 
 fs.readdir(dirDownload, {}, (err, files) => {
   if (err) console.log('err', err)
   else {
-    const apkIsExist = files.indexOf(`${appConfig.name}.apk`) !== -1
-    const ipaIsExist = files.indexOf(`${appConfig.name}.ipa`) !== -1
+    const apkIsExist = files.indexOf(`${PROJECTNAME}.apk`) !== -1
+    const ipaIsExist = files.indexOf(`${PROJECTNAME}.ipa`) !== -1
 
-    if (!apkIsExist) console.log(`${appConfig.name}.apk not found.`);
-    if (!ipaIsExist) console.log(`${appConfig.name}.ipa not found.`);
-    if (!DOWNLOADPATH || DOWNLOADPATH === 'https://DOWNLOADPATH') console.log(`DOWNLOADPATH in .env not found.`);
-    if (!BUNDLEID || BUNDLEID === 'com.q-digital.BUNDLEID') console.log(`BUNDLEID in .env not found.`);
-    if (!apkIsExist || !ipaIsExist || (!DOWNLOADPATH || DOWNLOADPATH === 'https://DOWNLOADPATH') || (!BUNDLEID || BUNDLEID === 'com.q-digital.BUNDLEID')) return;
+    if (!apkIsExist) console.log(`${PROJECTNAME}.apk not found.`);
+    if (!ipaIsExist) console.log(`${PROJECTNAME}.ipa not found.`);
+    if (!DOWNLOADPATH || DOWNLOADPATH === 'DOWNLOADPATH') console.log(`DOWNLOADPATH in .env not found.`);
+    if (!BUNDLEID || BUNDLEID === 'BUNDLEID') console.log(`BUNDLEID in .env not found.`);
+    if (!apkIsExist || !ipaIsExist || (!DOWNLOADPATH || DOWNLOADPATH === 'DOWNLOADPATH') || (!BUNDLEID || BUNDLEID === 'BUNDLEID')) return;
 
     fs.writeFileSync(dirDownload + '/index.html', indexHtml())
     fs.writeFileSync(dirDownload + '/app.plist', applist())
@@ -55,7 +49,7 @@ const indexHtml = () => {
               <div class="view view-main">
                   <div class="navbar">
                       <div class="navbar-inner">
-                          <div class="title sliding" style="left: 0px;">${appConfig.name}</div>
+                          <div class="title sliding" style="left: 0px;">${PROJECTNAME}</div>
                       </div>
                   </div>
                   <div class="page page-current" data-name="install">
@@ -65,7 +59,7 @@ const indexHtml = () => {
                               <ul>
                                   <li>
                                       <a class="item-link item-content external"
-                                          href="${DOWNLOADPATH}/${appConfig.name}.apk">
+                                          href="${DOWNLOADPATH}/${PROJECTNAME}.apk">
                                           <div class="item-media"><i class="fa fa-android" aria-hidden="true"></i></div>
                                           <div class="item-inner">
                                               <div class="item-title">Download application</div>
@@ -116,7 +110,7 @@ const applist = () => {
                         <key>kind</key>
                         <string>software-package</string>
                         <key>url</key>
-                        <string>${DOWNLOADPATH}/${appConfig.name}.ipa</string>
+                        <string>${DOWNLOADPATH}/${PROJECTNAME}.ipa</string>
                     </dict>
                 </array>
                 <key>metadata</key>
@@ -128,7 +122,7 @@ const applist = () => {
                     <key>kind</key>
                     <string>software</string>
                     <key>title</key>
-                    <string>${appConfig.name}</string>
+                    <string>${PROJECTNAME}</string>
                 </dict>
             </dict>
         </array>

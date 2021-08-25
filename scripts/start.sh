@@ -1,0 +1,1 @@
+node ./scripts/generate/config.js && node ./scripts/generate/routes.js && node ./scripts/generate/redux.js && npx react-native start

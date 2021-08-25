@@ -3,16 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "ios-archive": "cd ios && xcodebuild -workspace qdigitalcore.xcworkspace clean archive -scheme qdigitalcore -configuration Release -archivePath ../builds/ios/qdigitalcore.xcarchive",
-    "ios-export": "cd ios && xcodebuild -exportArchive -archivePath ../builds/ios/qdigitalcore.xcarchive -exportPath ../builds/ios/ -exportOptionsPlist ./iosExportOptions.plist",
-    "start": "npm run-script generate-config && npm run-script generate-routes && npm run-script generate-redux && react-native start",
-    "generate-config": "node ./scripts/generateConfig.js",
-    "generate-routes": "node ./scripts/generateRoutes.js",
-    "generate-redux": "node ./scripts/generateRedux.js",
-    "generate-download": "node ./scripts/generateDownload.js",
-    "generate-project": "node ./scripts/generateProject.js"
+    "start": "./scripts/start.sh",
+    "android": "./scripts/android/dev.sh",
+    "android-danger-keystore": "./scripts/android/keystore.sh",
+    "android-export": "./scripts/android/export.sh",
+    "ios": "./scripts/ios/dev.sh",
+    "ios-archive": "./scripts/ios/archive.sh",
+    "ios-export": "./scripts/ios/export.sh",
+    "generate-download": "node ./scripts/generate/download.js",
+    "generate-project": "node ./scripts/generate/project.js"
   },
   "dependencies": {
     "@babel/core": "^7.15.0",
