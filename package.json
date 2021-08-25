@@ -16,6 +16,7 @@
   "dependencies": {
     "@babel/core": "^7.15.0",
     "@babel/runtime": "^7.15.3",
+    "@codler/react-native-keyboard-aware-scroll-view": "^2.0.0",
     "@eva-design/eva": "^2.1.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
