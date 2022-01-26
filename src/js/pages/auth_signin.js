@@ -16,7 +16,7 @@ export class AuthSignin extends Page {
   constructor(_props) {
     super(_props);
 
-    this.state = {
+    this.state = {              // описываем состояние каждого элемента на странице авторизации
       elements: [
         {
           validation: Form.Validation.email,
@@ -41,7 +41,7 @@ export class AuthSignin extends Page {
           style: tailwind('px-0 ml-auto mb-4'),
           appearance: "ghost",
           status: "control",
-          onPress: () => this.go(Routes.auth.restore)
+          onPress: () => this.go(Routes.auth.restore)          // restore отсутствует   
         },
         {
           elementType: Form.BaseElementTypes.Submit,
@@ -57,7 +57,8 @@ export class AuthSignin extends Page {
           style: tailwind('mx-4 my-3'),
           status: "control",
           appearance: "ghost",
-          onPress: () => this.go(Routes.auth.signup)
+          onPress: () => this.go(Routes.auth.signup)     // при нажатии на элемент переход на signup -
+                                                         // нет такого поля в Routes.auth
         },
       ]
     };
@@ -72,12 +73,12 @@ export class AuthSignin extends Page {
         <ImageOverlay style={tailwind('flex-1')}>
           <View
             style={{
-              ...tailwind('justify-center items-center'),
-              ...style.signupView,
+              ...tailwind('justify-center items-center'),     // почему spread?
+              ...style.signupView,                             // почему spread?
             }}
           >
-            <Text style={tailwind('mt-4')} category="s1" status="control">
-              Авторизация
+            <Text style={tailwind('mt-6')} category="s1" status="control">
+              Авторизацияяяяя
             </Text>
           </View>
           <Form
