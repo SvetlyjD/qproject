@@ -33,9 +33,9 @@ export class Page<P extends _P, S> extends React.Component<P, S> {
     global.setPreloader = props.setPreloader;
   }
 
-  static mapStateToProps = (state: any, customState: any) => ({
-    preloader: state.preloader,
-    alert: state.alert,
+  static mapStateToProps = (state: any, customState: any) => ({  // any - произвольный тип
+    preloader: state.preloader,          // preloader, alert, popupMenu, select, ImageViewer  - 
+    alert: state.alert,               // это this.props -  для классов созданных на основе Page
     popupMenu: state.popupMenu,
     select: state.select,
     imageViewer: state.imageViewer,
@@ -44,10 +44,10 @@ export class Page<P extends _P, S> extends React.Component<P, S> {
 
   static mapDispatchToProps = (dispatch: any, customActions: any) => {
     const actions: any = {
-      setPreloader,
-      setAlert,
-      setPopupMenu,
-      setSelect,
+      setPreloader,                  //  названия экшнов для классов на основе Page
+      setAlert,               //расположены в папке src core generated, 
+      setPopupMenu,         // например при нажатии кноки Button "alert" срабатывает диспатч setAlert
+      setSelect,   // который прокидывает кучу данных, включая функцию нажатия в редакс?
       setImageViewer,
       ...customActions
     }
