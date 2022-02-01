@@ -1,4 +1,4 @@
-import Network from "@core/mixins/network";
+  import Network from "@core/mixins/network";
 
 export interface PropsCollection {
   onLoad: Function | undefined,

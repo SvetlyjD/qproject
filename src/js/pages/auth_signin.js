@@ -66,8 +66,9 @@ export class AuthSignin extends Page {
           style: tailwind('mx-4 my-3'),
           status: 'control',
           appearance: 'ghost',
-          onPress: () => this.go(Routes.auth.signup) // при нажатии на элемент переход на signup -
+          // onPress: () => this.go(Routes.auth.signup) // при нажатии на элемент переход на signup -
           // onPress: async () =>  Helpers.log(await Helpers.Store.get('email'))
+          onPress: () => Helpers.log('text')
         }
       ]
     }
@@ -83,9 +84,6 @@ export class AuthSignin extends Page {
 
   onSubmit = async () => {
     const { email, password } = this.state
-    // Helpers.Store.set('email', email)
-    // Helpers.Store.set('password', password)
-    // Helpers.log(await Helpers.Store.get('email'))
   }
 
   render() {
@@ -172,7 +170,7 @@ export class AuthSignin extends Page {
                 // переход в галерею
                 this.props.setImageViewer({
                   images: [
-                    'https://crm.q-digital.org/assets/gentelella/public/images/logo.png',
+                    'https://www.gizmonews.ru/wp-content/uploads/2016/08/charmeleon-850x850.png',
                     'https://crm.q-digital.org/assets/gentelella/public/images/logo.png'
                   ],
                   id: 0

@@ -39,7 +39,7 @@ export class AuthSignin extends Page {
             textStyle: tailwind('pr-12'),
             name: 'password',
             status: 'control',
-            style: tailwind('mt-4'),
+            style: tailwind('mt-4')
             // onChangeValue: this.onPasswordChange
           },
           confirm: {
