@@ -1,7 +1,8 @@
-import Task from './task';
+import { Image } from 'react-native'
+import Task from './task'
 
 export const Models = {
-  Task,
-};
+  Task
+}
 
-export default Models;
+export default Models

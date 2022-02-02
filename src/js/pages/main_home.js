@@ -12,7 +12,6 @@ import ImageOverlay from '@core/components/base/imageOverlay'
 import Routes from '@core/generated/routes'
 import Button from '../../core/components/base/form/elements/button'
 import Helpers from '@core/helpers'
-import Collection from '@core/components/abstract/collection'
 import TaskCollection from '@collections/task'
 import { ScrollView } from 'react-native-gesture-handler'
 
@@ -29,9 +28,34 @@ export class AuthSignin extends Page {
           label: '',
           status: 'control',
           placeholder: 'наименование темы'
-        }
-      ],
-      elements2: [
+        },
+        {
+          elementType: Form.BaseElementTypes.Input,
+          style: tailwind('mt-5'),
+          multiline: true,
+          textStyle: { minHeight: 64 },
+          status: 'control',
+          name: 'email',
+          onChangeValue: this.onEmailChange
+        },
+
+        {
+          elementType: Form.BaseElementTypes.Button,
+          // title: this.state.selectTitle ? this.state.selectTitle : 'Тема',
+          title: 'Тема',
+          style: tailwind('h-12 w-32 bg-blue text-xl rounded-lg mt-5 mb-5'),
+          status: 'control',
+          onPress: () => {
+            this.props.setSelect({
+              list: [
+                { title: 'Общая', value: 'dublicate' },
+                { title: 'Приватная', value: 'inwork' }
+              ],
+              onChange: value => this.setState({ selectTitle: value.title })
+            })
+            Helpers.log(this.state.selectTitle)
+          }
+        },
         {
           elementType: Form.BaseElementTypes.Submit,
           title: 'Отправить',
@@ -50,6 +74,14 @@ export class AuthSignin extends Page {
       ]
     }
   }
+
+  // componentDidMount() {
+  //   this.tasks = new TaskCollection({
+  //     onLoad: () => {
+  //       this.setState({ tasksLoaded: true })
+  //     }
+  //   })
+  // }
 
   onSubmit = ({ data }) => {}
 
@@ -75,42 +107,7 @@ export class AuthSignin extends Page {
             style={{
               ...tailwind('justify-center ml-4'),
               ...style.signupViewHome
-            }}>
-            <Button
-              element={{
-                style: tailwind(
-                  'h-12 w-30 bg-blue text-xl rounded-lg mt-5 mb-5'
-                ),
-                title: this.state.selectTitle || 'Тема',
-                onPress: () => {
-                  // при нажатии всплывает модальное окно
-
-                  this.props.setSelect({
-                    list: [
-                      { title: 'Общая', value: 'dublicate' },
-                      { title: 'Приватная', value: 'inwork' }
-                    ],
-                    onChange: value =>
-                      this.setState({ selectTitle: value.title })
-                  })
-                  Helpers.log(this.state.selectTitle)
-                }
-              }}
-            />
-          </View>
-          <View>
-            <TextInput
-              style={{
-                ...tailwind('justify-center mx-4 rounded-2xl border-2'),
-                ...style.mainTextInput
-              }}
-              multiline={true}
-              numberOfLines={4}
-              onChangeText={text => this.setState({ textData: text })}
-              value={this.state.text}
-            />
-          </View>
-
+            }}></View>
           <View style={{ ...tailwind('flex-row') }}>
             <View
               style={tailwind(
@@ -148,8 +145,13 @@ export class AuthSignin extends Page {
                 }}
               />
             </View>
-            <ScrollView horizontal={true}>
-              {/* <View style={tailwind('flex-row ml-2 mt-2 mb-2')}>
+           
+           
+            {/* {this.state.tasksLoaded ? this.tasks.render() : null} */}
+           
+           
+            {/* <ScrollView horizontal={true}>
+              <View style={tailwind('flex-row ml-2 mt-2 mb-2')}>
                 {this.state.imagesLink.map((item, index) => (
                   <View style={tailwind('flex ml-2 mt-2 mb-2')}>
                     <Image
@@ -175,9 +177,8 @@ export class AuthSignin extends Page {
                     </View>
                   </View>
                 ))}
-              </View> */}
-              <Collection></Collection>
-            </ScrollView>
+              </View>
+            </ScrollView> */}
           </View>
           <View style={{ ...tailwind('h-full') }}>
             <Form

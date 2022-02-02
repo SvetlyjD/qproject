@@ -46,10 +46,12 @@ export class Input extends FormElement {
   }
 
   render() {
-    const { element, onChangeValue } = this.props
+    const { element, onChangeValue, mult, minHeight } = this.props
     return <InputLib
       placeholderTextColor={getColor('grey')}
       onChangeValue={onChangeValue}
+      multiline={mult}
+      textStyle={minHeight}
       {...element}
       element={element}
       validate={this.validate}

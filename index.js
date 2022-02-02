@@ -2,26 +2,26 @@
  * @format
  */
 
-import { AppRegistry,LogBox } from 'react-native';
-import App from 'src/js/App';
-import { name as appName } from '@configs/app.json';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import React from 'react';
-import Reactotron from '@configs/reactotron';
-import * as eva from '@eva-design/eva';
-import { ApplicationProvider } from '@ui-kitten/components';
-import { AppearanceProvider } from 'react-native-appearance';
-import Helpers from '@helpers';
-import moment from 'moment';
-import 'moment/locale/ru' 
+import { AppRegistry, LogBox } from 'react-native'
+import App from 'src/js/App'
+import { name as appName } from '@configs/app.json'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import React from 'react'
+import Reactotron from '@configs/reactotron'
+import * as eva from '@eva-design/eva'
+import { ApplicationProvider } from '@ui-kitten/components'
+import { AppearanceProvider } from 'react-native-appearance'
+import Helpers from '@helpers'
+import moment from 'moment'
+import 'moment/locale/ru'
 import { setIsDarkTheme as reduxSetIsDarkTheme } from '@core/generated/actions'
-import 'react-native-console-time-polyfill';
+import 'react-native-console-time-polyfill'
 
-const store = createStore(...new Reactotron()); //create redux store
+const store = createStore(...new Reactotron()) //create redux store
 
-LogBox.ignoreLogs(['tintColor']);
-LogBox.ignoreAllLogs(true);
+LogBox.ignoreLogs(['tintColor'])
+LogBox.ignoreAllLogs(true)
 moment.locale('ru')
 
 function select(state, key) {
@@ -48,7 +48,7 @@ const Wrapper = () => {
   let reduxStore = store.getState()
 
   if (!storeGetted) {
-    Helpers.Store.getAll(['isDarkTheme']).then(async (res) => {
+    Helpers.Store.getAll(['isDarkTheme']).then(async res => {
       storeGetted = true
 
       if (res.isDarkTheme !== null) {
@@ -73,7 +73,6 @@ const Wrapper = () => {
       </AppearanceProvider>
     </React.Fragment>
   )
-};
+}
 
-
-AppRegistry.registerComponent(appName, () => Wrapper);
+AppRegistry.registerComponent(appName, () => Wrapper)

@@ -11,9 +11,10 @@ export class TaskCollection extends Collection {
     return {
       load: {
         request: { url: `${BASEURL}:${PORT}/issues/list` },
+
       },
     };
   }
-}
+} 
 
 export default TaskCollection;
