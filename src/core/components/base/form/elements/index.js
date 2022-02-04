@@ -5,7 +5,7 @@ import Input from './input'
 import Password from './password'
 import Text from './text'
 import Confirm_password from './confirm_password'
-import TextArea from './textarea'
+import PrevGalery from './prewgalery'
 
 export const Elements = {
   Button,
@@ -13,7 +13,8 @@ export const Elements = {
   Input,
   Password,
   Text,
-  Confirm_password
+  Confirm_password,
+  PrevGalery
 }
 
 export const ElementTypes = keysEqualValuesObject(Elements)

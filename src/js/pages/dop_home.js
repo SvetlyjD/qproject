@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Image, StyleSheet, TextInput, _Image } from 'react-native'
-import { BottomNavigation, Text } from '@ui-kitten/components'
+import { View,  StyleSheet, _Image } from 'react-native'
+import {  Text } from '@ui-kitten/components'
 import KeyboardAvoidingView from '@core/components/base/keyboardAvoidingView'
 import { tailwind } from '@tailwind'
 import Page from '@core/components/abstract/page'
@@ -9,13 +9,11 @@ import { BASEURL, PORT } from '@core/generated/config'
 import style from '../style'
 import Form from '@core/components/base/form'
 import ImageOverlay from '@core/components/base/imageOverlay'
-import Routes from '@core/generated/routes'
-import Button from '../../core/components/base/form/elements/button'
+
 import Helpers from '@core/helpers'
-import TaskCollection from '@collections/task1'
-import { ScrollView } from 'react-native-gesture-handler'
+
 import {
-  BottomNavigationSimpleUsageShowcase,
+ 
   MainMenu
 } from './bottom_navigation'
 
@@ -29,7 +27,7 @@ export class AuthSignin extends Page {
       elements: [
         {
           elementType: Form.BaseElementTypes.Submit,
-          title: 'Отправить',
+          title: 'Выход',
           style: tailwind('mt-auto'),
           status: 'control',
           size: 'giant',
@@ -39,15 +37,6 @@ export class AuthSignin extends Page {
     }
   }
 
-  componentDidMount() {
-    this.tasks = new TaskCollection({
-      onLoad: () => {
-        this.setState({ tasksLoaded: true })
-      }
-    })
-  }
-
-  onSubmit = ({ data }) => {}
 
   render() {
     Helpers.log('tasks', this.tasks)
@@ -57,20 +46,22 @@ export class AuthSignin extends Page {
           <ImageOverlay style={tailwind('flex ')}>
             <View
               style={{
-                ...tailwind('justify-center items-center'),
-                ...style.signupViewHome
+                ...tailwind('flex mt-2 mb-2 justify-center items-center'),
+                
               }}>
-              <Text style={tailwind('mt-2')} category="s1" status="control">
-                ещеkhkhgkjhgjlhgjlhgjhgjhgjlh
+              <Text style={tailwind(' mt-2')} category="s1" status="control">
+                Еще
               </Text>
             </View>
-            <Form
+           <View>
+           <Form
               url={`${BASEURL}:${PORT}/user/home`}
               wrapperProps={{ style: tailwind('flex px-4') }}
               elements={this.state.elements} // отображение блока элементов
             />
-
-            <MainMenu></MainMenu>
+           </View>
+           <View style={{ ...tailwind('h-40') }}></View>
+            <MainMenu go={this.go}></MainMenu>
           </ImageOverlay>
         </KeyboardAvoidingView>
       </>

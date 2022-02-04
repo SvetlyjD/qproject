@@ -3,29 +3,31 @@ import Routes from '@core/generated/routes'
 import { BottomNavigation, BottomNavigationTab } from '@ui-kitten/components'
 import { connect } from 'react-redux'
 import Page from '@core/components/abstract/page'
-import Helpers from '@core/helpers'
-import { TouchableOpacity, TouchableWithoutFeedbackComponent } from 'react-native'
 
-export const MainMenu = () => {
-  const [selectedIndex, setSelectedIndex] = React.useState(0)
 
-  // render() {
-  return (
-    <BottomNavigation
-      selectedIndex={selectedIndex}
+export class MainMenu extends React.Component {
+  constructor(_props) {
+    super(_props)
+
+    this.state = {
+      index: 0
+    }
+  }
+  render() {
+    return (
+      <BottomNavigation
+      selectedIndex={this.state.index}          
       onSelect={index => {
-        index ? this.go(Routes.main.home) :  this.go(Routes.dop.home)
-        setSelectedIndex(index)
-             }}>
-      {/* <TouchableOpacity onPress={() => Helpers.log('1')}> */}
+        this.setState({selectedIndex:index})   
+        !index
+            ? this.props.go(Routes.main.home)
+            : this.props.go(Routes.dop.home)
+          // this.setState({ index: !this.state.index })
+        }}>
         <BottomNavigationTab title="Главная" />
-      {/* </TouchableOpacity> */}
-      {/* <TouchableOpacity  onPress={() => Helpers.log('2')}> */}
-      <BottomNavigationTab title="Еще" />
-      {/* </TouchableOpacity> */}
-         </BottomNavigation>
-  )
-  // }
+        <BottomNavigationTab title="Еще" />
+      </BottomNavigation>
+    )
+  }
 }
-
 export default connect(Page.mapStateToProps, Page.mapDispatchToProps)(MainMenu)

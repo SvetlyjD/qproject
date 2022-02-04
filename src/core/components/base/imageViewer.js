@@ -47,7 +47,7 @@ export class ImageViewer extends React.Component {
         <View style={tailwind('w-full h-full')}>
           {imageViewer ? (
             <ImageViewerLib
-              enableSwipeDown
+              // enableSwipeDown
               saveToLocalByLongPress={false}
               imageUrls={imageViewer.images.map((url) => ({ url }))}
               onCancel={this.onCancel}

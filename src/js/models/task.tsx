@@ -31,8 +31,7 @@ export class TaskModel extends Model {
             X
           </Text>
          </View>
-          
-        </View>
+                  </View>
        </View>
     )
   }
