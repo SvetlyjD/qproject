@@ -52,12 +52,12 @@ export class AuthSignin extends Page {
           }
         },
         {
-          elementType: Form.BaseElementTypes.Submit,
+          elementType: Form.BaseElementTypes.Button,
           title: 'Зарегистрироваться',
           style: tailwind('mt-auto'),
           status: 'control',
           size: 'giant',
-          onPress: this.onSubmit
+          onPress: this.onReg
         },
         {
           elementType: Form.BaseElementTypes.Button,
@@ -80,10 +80,11 @@ export class AuthSignin extends Page {
     this.setState({ password: value })
   }
 
-  onSubmit = async () => {
+  onReg = async () => {
     const { email, password } = this.state
-    Helpers.Store.set('email', email)
-    Helpers.Store.set('password', password)
+   await Helpers.Store.set('email', email)
+  await Helpers.Store.set('password', password)
+   this.go(Routes.auth.signin)
   }
 
   render() {

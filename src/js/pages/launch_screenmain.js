@@ -7,13 +7,14 @@ import { connect } from 'react-redux';
 import Helpers from '@core/helpers';
 
 export class LaunchScreen extends Page {
+  
   componentDidMount() {
     this.authProccess()  // перед монтированием выполняет метод  authProccess
   }
  
   authProccess = () => {
     setTimeout(()=>Helpers.log(),1000);
-    Helpers.historyReplace(Routes.auth.signin, this.props.history);   //historyReplace = (path, history)
+    Helpers.historyReplace(Routes.main.home,history);   //historyReplace = (path, history)
     // - функция, принимающая два параметра  1 параметр - Routes.auth.signin - путь Routes.auth.signin;
     // - "/auth/signin - переходит по данному пути",
     // второй параметр - history - хОТКУДА  ОН БЕРЕТСЯ - данные с авторизации?

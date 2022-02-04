@@ -18,27 +18,26 @@ export const style = StyleSheet.create({
   },
   signupViewHome: {
     minHeight: 50,
-    width:150,
-    
+    width: 150
   },
-  selectButtonMain:{
-    marginTop:20
+  selectButtonMain: {
+    marginTop: 20
   },
-  mainTextInput:{
-    backgroundColor:"lightgrey",
-    borderColor:"gray"
+  mainTextInput: {
+    backgroundColor: 'lightgrey',
+    borderColor: 'gray'
   },
-  buttonAdd:{
-    height:150,
-    width:150,
-    backgroundColor:"red"
+  buttonAdd: {
+    height: 150,
+    width: 150,
+    backgroundColor: 'red'
   },
-  mainImageClose:{
-    marginLeft:60,
-    alignItems:"center"
+  mainImageClose: {
+    marginLeft: 60,
+    alignItems: 'center'
   },
-  textClose:{
-    color:"white"
+  textClose: {
+    color: 'red'
   }
 })
 

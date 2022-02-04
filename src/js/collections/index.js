@@ -1,4 +1,4 @@
-import Task from './task';
+import Task from './task1';
 
 export const Models = {
   Task,

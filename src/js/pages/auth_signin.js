@@ -49,16 +49,15 @@ export class AuthSignin extends Page {
           style: tailwind('px-0 ml-auto mb-4'),
           appearance: 'ghost',
           status: 'control',
-          // onPress: () => Helpers.log('text')
           onPress: () => this.go(Routes.main.home) // restore отсутствует, такого пути не существует
         },
         {
-          elementType: Form.BaseElementTypes.Submit,
+          elementType: Form.BaseElementTypes.Button,
           title: 'Войти',
           style: tailwind('mt-auto'),
           status: 'control',
           size: 'giant',
-          onPress: this.onSubmit
+          onPress: this.onAuth
         },
         {
           elementType: Form.BaseElementTypes.Button,
@@ -66,24 +65,38 @@ export class AuthSignin extends Page {
           style: tailwind('mx-4 my-3'),
           status: 'control',
           appearance: 'ghost',
-          // onPress: () => this.go(Routes.auth.signup) // при нажатии на элемент переход на signup -
-          // onPress: async () =>  Helpers.log(await Helpers.Store.get('email'))
-          onPress: () => Helpers.log('text')
+          onPress: () => this.go(Routes.auth.signup) // при нажатии на элемент переход на signup -
         }
       ]
     }
   }
 
   onEmailChange = value => {
-    this.setState({ email: value })
+    this.setState({ email1: value })
   }
 
   onPasswordChange = value => {
-    this.setState({ password: value })
+    this.setState({ password1: value })
   }
 
-  onSubmit = async () => {
-    const { email, password } = this.state
+  onAuth = async () => {
+    const { email1, password1 } = this.state
+    let email = await Helpers.Store.get('email')
+    let password = await Helpers.Store.get('password')
+
+    if (email1 == email && password1 == password) {
+      this.go(Routes.main.home)
+    } else {
+      this.props.setAlert({
+        title: 'Проверьте логин или пароль',
+        buttons: [
+          {
+            text: 'Ок',
+            style: tailwind('text-red')
+          }
+        ]
+      })
+    }
   }
 
   render() {

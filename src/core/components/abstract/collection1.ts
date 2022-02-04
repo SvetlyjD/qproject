@@ -35,6 +35,7 @@ export class Collection extends Network() {
     });
   }
 
+
   async load() {
     const response = await this.request(this.config.load);
     if (response.status && response.data?.length) {
@@ -56,7 +57,6 @@ export class Collection extends Network() {
 
     return response;
   }
-
 
   async add(data: any) {
     await this.request(this.config.add, data)

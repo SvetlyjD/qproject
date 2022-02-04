@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Image, StyleSheet, TextInput, _Image } from 'react-native'
-import { Text } from '@ui-kitten/components'
+import { BottomNavigation, Text } from '@ui-kitten/components'
 import KeyboardAvoidingView from '@core/components/base/keyboardAvoidingView'
 import { tailwind } from '@tailwind'
 import Page from '@core/components/abstract/page'
@@ -12,8 +12,9 @@ import ImageOverlay from '@core/components/base/imageOverlay'
 import Routes from '@core/generated/routes'
 import Button from '../../core/components/base/form/elements/button'
 import Helpers from '@core/helpers'
-import TaskCollection from '@collections/task'
+import TaskCollection from '@collections/task1'
 import { ScrollView } from 'react-native-gesture-handler'
+import { BottomNavigationSimpleUsageShowcase, MainMenu } from './bottom_navigation'
 
 export class AuthSignin extends Page {
   // смотрим класс Page какие пропсы он передает
@@ -38,10 +39,8 @@ export class AuthSignin extends Page {
           name: 'email',
           onChangeValue: this.onEmailChange
         },
-
         {
           elementType: Form.BaseElementTypes.Button,
-          // title: this.state.selectTitle ? this.state.selectTitle : 'Тема',
           title: 'Тема',
           style: tailwind('h-12 w-32 bg-blue text-xl rounded-lg mt-5 mb-5'),
           status: 'control',
@@ -75,120 +74,92 @@ export class AuthSignin extends Page {
     }
   }
 
-  // componentDidMount() {
-  //   this.tasks = new TaskCollection({
-  //     onLoad: () => {
-  //       this.setState({ tasksLoaded: true })
-  //     }
-  //   })
-  // }
+  componentDidMount() {
+    this.tasks = new TaskCollection({
+      onLoad: () => {
+        this.setState({ tasksLoaded: true })
+      }
+    })
+  }
 
   onSubmit = ({ data }) => {}
 
   render() {
+    Helpers.log('tasks', this.tasks)
     return this._render(
-      <KeyboardAvoidingView>
-        <ImageOverlay style={tailwind('flex ')}>
-          <View
-            style={{
-              ...tailwind('justify-center items-center'),
-              ...style.signupViewHome
-            }}>
-            <Text style={tailwind('mt-2')} category="s1" status="control">
-              Майн хоме
-            </Text>
-          </View>
-          <Form
-            url={`${BASEURL}:${PORT}/user/home`}
-            wrapperProps={{ style: tailwind('flex px-4') }}
-            elements={this.state.elements} // отображение блока элементов
-          />
-          <View
-            style={{
-              ...tailwind('justify-center ml-4'),
-              ...style.signupViewHome
-            }}></View>
-          <View style={{ ...tailwind('flex-row') }}>
+      <>
+        <KeyboardAvoidingView>
+          <ImageOverlay style={tailwind('flex ')}>
             <View
-              style={tailwind(
-                'flex-row h-20 w-20 bg-blue text-xl rounded-lg ml-4 mt-4 mb-2'
-              )}>
-              <Button
-                element={{
-                  style: tailwind('h-20 w-20 bg-blue text-xl  rounded-lg'),
-                  title: '+',
-                  onPress: () => {
-                    this.props.setPopupMenu({
-                      groups: [
-                        {
-                          title: 'Прикрепить фото',
-                          subTitle: 'Выберите откуда вы хотите прикрепить фото',
-                          list: [
-                            {
-                              title: 'Выбрать из галереи',
-                              onPress: () => {
-                                this.props.setImageViewer({
-                                  images: this.state.imagesLink,
-                                  id: 0
-                                })
-                              }
-                            },
-                            {
-                              title: 'Сделать фото',
-                              onPress: () => false
-                            }
-                          ]
-                        }
-                      ]
-                    })
-                  }
-                }}
-              />
+              style={{
+                ...tailwind('justify-center items-center'),
+                ...style.signupViewHome
+              }}>
+              <Text style={tailwind('mt-2')} category="s1" status="control">
+                Майн хоме
+              </Text>
             </View>
-           
-           
-            {/* {this.state.tasksLoaded ? this.tasks.render() : null} */}
-           
-           
-            {/* <ScrollView horizontal={true}>
-              <View style={tailwind('flex-row ml-2 mt-2 mb-2')}>
-                {this.state.imagesLink.map((item, index) => (
-                  <View style={tailwind('flex ml-2 mt-2 mb-2')}>
-                    <Image
-                      source={{ uri: item }}
-                      style={{ width: 80, height: 80 }}></Image>
-                    <View
-                      data={index}
-                      style={{
-                        ...tailwind('absolute mt-0 mb-2 w-5 h-5 bg-blue'),
-                        ...style.mainImageClose
-                      }}>
-                      <Text
-                        onPress={() =>
-                          this.setState({
-                            imagesLink: this.state.imagesLink.filter(
-                              (item, index1) => index1 != index
-                            )
-                          })
-                        }
-                        style={style.textClose}>
-                        X
-                      </Text>
-                    </View>
-                  </View>
-                ))}
-              </View>
-            </ScrollView> */}
-          </View>
-          <View style={{ ...tailwind('h-full') }}>
             <Form
               url={`${BASEURL}:${PORT}/user/home`}
               wrapperProps={{ style: tailwind('flex px-4') }}
-              elements={this.state.elements2} // отображение блока элементов
+              elements={this.state.elements} // отображение блока элементов
             />
-          </View>
-        </ImageOverlay>
-      </KeyboardAvoidingView>
+            <View
+              style={{
+                ...tailwind('justify-center ml-4'),
+                ...style.signupViewHome
+              }}></View>
+            <View style={{ ...tailwind('flex-row') }}>
+              <View
+                style={tailwind(
+                  'flex-row h-20 w-20 bg-blue text-xl rounded-lg ml-4 mt-4 mb-2'
+                )}>
+                <Button
+                  element={{
+                    style: tailwind('h-20 w-20 bg-blue text-xl  rounded-lg'),
+                    title: '+',
+                    onPress: () => {
+                      this.props.setPopupMenu({
+                        groups: [
+                          {
+                            title: 'Прикрепить фото',
+                            subTitle:
+                              'Выберите откуда вы хотите прикрепить фото',
+                            list: [
+                              {
+                                title: 'Выбрать из галереи',
+                                onPress: () => {
+                                  this.props.setImageViewer({
+                                    images: this.state.imagesLink,
+                                    id: 0
+                                  })
+                                }
+                              },
+                              {
+                                title: 'Сделать фото',
+                                onPress: () => false
+                              }
+                            ]
+                          }
+                        ]
+                      })
+                    }
+                  }}
+                />
+              </View>
+              <View style={{ ...tailwind('mt-2 mr-5') }}>
+             
+                <ScrollView horizontal>
+                  {this.state.tasksLoaded ? this.tasks.render() : null}
+                </ScrollView>
+              </View>
+            </View>
+<MainMenu></MainMenu>
+            <View style={{ ...tailwind('h-40') }}></View>
+          
+          </ImageOverlay>
+                </KeyboardAvoidingView>
+      </>
     )
   }
 }
