@@ -9,10 +9,7 @@ import { BASEURL, PORT } from '@core/generated/config'
 import style from '../style'
 import Form from '@core/components/base/form'
 import ImageOverlay from '@core/components/base/imageOverlay'
-import Button from '../../core/components/base/form/elements/button'
 import Helpers from '@core/helpers'
-import TaskCollection from '@collections/task1'
-import { ScrollView } from 'react-native-gesture-handler'
 import { MainMenu } from './bottom_navigation'
 
 let c = [
@@ -39,7 +36,7 @@ export class AuthSignin extends Page {
 
     this.state = {
       // описываем состояние каждого элемента на странице авторизации
-      imagesGallery: Array.from(c),
+      imagesGallery: [],
       elements: [
         {
           elementType: Form.BaseElementTypes.Input,
@@ -73,9 +70,12 @@ export class AuthSignin extends Page {
           }
         },
         {
-          elementType: Form.BaseElementTypes.Button,
+          elementType: Form.BaseElementTypes.PrevGalery,
+          getActiveImages: this.getActiveImages,
+          setActiveImages: this.setActiveImages,
+          onComponentRef: this.onGalleryComponentRef,
           title: '+',
-          style: tailwind('h-20 w-20 bg-blue text-xl  rounded-lg'),
+          style: tailwind('h-24 w-24 mt-2 bg-blue text-xl  rounded-lg'),
           onPress: () => {
             this.props.setPopupMenu({
               groups: [
@@ -86,18 +86,12 @@ export class AuthSignin extends Page {
                     {
                       title: 'Выбрать из галереи',
                       onPress: () => {
-                        this.setState({
-                          imagesGalery: this.getActiveImages
-                        })
-                        this.props.setImageViewer({
-                          images: this.getActiveImages,
-                          id: 0
-                        })
+                        this.setImagesGalery()
                       }
                     },
                     {
                       title: 'Сделать фото',
-                      onPress: () => false
+                      onPress: () => this.setActiveImagesGalery()
                     }
                   ]
                 }
@@ -106,14 +100,9 @@ export class AuthSignin extends Page {
           }
         },
         {
-          elementType: Form.BaseElementTypes.PrevGalery,
-          getActiveImages: this.getActiveImages,
-          setActiveImages: this.setActiveImages
-        },
-        {
           elementType: Form.BaseElementTypes.Button,
           title: 'Отправить',
-          style: tailwind('mt-auto'),
+          style: tailwind('mt-2'),
           status: 'control',
           size: 'giant',
           onPress: this.onSubmit
@@ -124,6 +113,20 @@ export class AuthSignin extends Page {
 
   setActiveImages = images => {
     this.setState({ imagesGallery: images })
+  }
+
+  setImagesGalery = () => {
+    this.setState({ imagesGallery: Array.from(c) })
+    this.imageGalleryComponent?.setState({ images: this.getActiveImages() })
+  }
+
+  setActiveImagesGalery = () => {
+    this.setState({ imagesGallery: [c[0]] })
+    this.imageGalleryComponent?.setState({ images: this.getActiveImages() })
+  }
+
+  onGalleryComponentRef = component => {
+    this.imageGalleryComponent = component
   }
 
   getActiveImages = () => {
@@ -142,7 +145,7 @@ export class AuthSignin extends Page {
           <ImageOverlay style={tailwind('flex ')}>
             <View
               style={{
-                ...tailwind('justify-center items-center'),
+                ...tailwind(' justify-center items-center'),
                 ...style.signupViewHome
               }}>
               <Text style={tailwind('mt-2')} category="s1" status="control">
@@ -154,60 +157,9 @@ export class AuthSignin extends Page {
               wrapperProps={{ style: tailwind('flex px-4') }}
               elements={this.state.elements} // отображение блока элементов
             />
-            <View
-              style={{
-                ...tailwind('justify-center ml-4'),
-                ...style.signupViewHome
-              }}></View>
-            <View style={{ ...tailwind('flex-row') }}>
-              <View
-                style={tailwind(
-                  'flex-row h-20 w-20 bg-blue text-xl rounded-lg ml-4 mt-4 mb-2'
-                )}>
-                <Button
-                  element={{
-                    style: tailwind('h-20 w-20 bg-blue text-xl  rounded-lg'),
-                    title: '+',
-                    onPress: () => {
-                      this.props.setPopupMenu({
-                        groups: [
-                          {
-                            title: 'Прикрепить фото',
-                            subTitle:
-                              'Выберите откуда вы хотите прикрепить фото',
-                            list: [
-                              {
-                                title: 'Выбрать из галереи',
-                                onPress: () => {
-                                  this.setState({
-                                    imagesGalery: this.state.imagesLink
-                                  })
-                                  this.props.setImageViewer({
-                                    images: this.state.imagesLink,
-                                    id: 0
-                                  })
-                                }
-                              },
-                              {
-                                title: 'Сделать фото',
-                                onPress: () => false
-                              }
-                            ]
-                          }
-                        ]
-                      })
-                    }
-                  }}
-                />
-              </View>
-              <View style={{ ...tailwind('mt-2 mr-5') }}>
-                <ScrollView horizontal>
-                  {/* {this.state.tasksLoaded ? this.tasks.render() : null} */}
-                </ScrollView>
-              </View>
+            <View style={{ ...tailwind('mt-52') }}>
+              <MainMenu go={this.go}></MainMenu>
             </View>
-            <MainMenu go={this.go}></MainMenu>
-            <View style={{ ...tailwind('h-40') }}></View>
           </ImageOverlay>
         </KeyboardAvoidingView>
       </>

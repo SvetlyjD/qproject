@@ -85,6 +85,7 @@ export class AuthSignin extends Page {
     let password = await Helpers.Store.get('password')
 
     if (email1 == email && password1 == password) {
+      await Helpers.Store.set('key', true)
       this.go(Routes.main.home)
     } else {
       this.props.setAlert({

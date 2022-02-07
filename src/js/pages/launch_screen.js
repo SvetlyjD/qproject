@@ -1,25 +1,33 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React from 'react'
+import { View, Text } from 'react-native'
 import Page from '@core/components/abstract/page'
-import { tailwind } from '@tailwind';
-import Routes from '@core/generated/routes';
-import { connect } from 'react-redux';
-import Helpers from '@core/helpers';
+import { tailwind } from '@tailwind'
+import Routes from '@core/generated/routes'
+import { connect } from 'react-redux'
+import Helpers from '@core/helpers'
 
 export class LaunchScreen extends Page {
   componentDidMount() {
-    this.authProccess()  // перед монтированием выполняет метод  authProccess
+    this.authProccess() // перед монтированием выполняет метод  authProccess
   }
- 
-  authProccess = () => {
-    setTimeout(()=>Helpers.log(),1000);
-    Helpers.historyReplace(Routes.auth.signin, this.props.history);   //historyReplace = (path, history)
+
+  authProccess = async () => {
+    setTimeout(() => Helpers.log(), 1000)
+    // Helpers.historyReplace(Routes.auth.signin, this.props.history);   //historyReplace = (path, history)
+    if (await Helpers.Store.get('key')) {
+      Helpers.historyReplace(Routes.main.home, this.props.history)
+      Helpers.log("keytru")
+    } else {
+      Helpers.historyReplace(Routes.auth.signin, this.props.history)
+      Helpers.log("keyfalse")
+    }
     // - функция, принимающая два параметра  1 параметр - Routes.auth.signin - путь Routes.auth.signin;
     // - "/auth/signin - переходит по данному пути",
     // второй параметр - history - хОТКУДА  ОН БЕРЕТСЯ - данные с авторизации?
-  };
+  }
 
-  render() {       // здесь просто рендер ланчскрина
+  render() {
+    // здесь просто рендер ланчскрина
     return (
       <View style={tailwind('justify-center items-center flex-1')}>
         <Text style={tailwind('mb-4')}>LaunchScreen</Text>
@@ -28,4 +36,7 @@ export class LaunchScreen extends Page {
   }
 }
 
-export default connect(Page.mapStateToProps, Page.mapDispatchToProps)(LaunchScreen);
+export default connect(
+  Page.mapStateToProps,
+  Page.mapDispatchToProps
+)(LaunchScreen)

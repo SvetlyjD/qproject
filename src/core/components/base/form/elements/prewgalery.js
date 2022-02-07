@@ -1,19 +1,25 @@
 import React from 'react'
 import FormElement from '@core/components/abstract/formElement'
 import tailwind from 'tailwind-rn'
-import Helpers from '@core/helpers'
-import { Image, ScrollView, Text, View } from 'react-native'
-import { Button } from '@ui-kitten/components'
-import style from '@style/'
+import { ScrollView, View } from 'react-native'
 import ImageItem from './imageItem'
+import Button from './button'
+import Helpers from '@core/helpers'
 
 export class PrevGalery extends FormElement {
   constructor(_props) {
     super(_props)
 
     this.state = {
-      images: this.props.element.getActiveImages()
+      images: this.props.element.getActiveImages(),
+      title: this.props.element.title,
+      style: this.props.element.style,
+      onPress: this.props.element.onPress
     }
+  }
+
+  componentDidMount () {
+    this.props.element.onComponentRef?.(this)
   }
 
   updateData = id => {
@@ -26,14 +32,29 @@ export class PrevGalery extends FormElement {
 
   render() {
     const images = this.state.images
+    Helpers.log("images prewu",images)
     return (
-      <ScrollView horizontal={true}>
-        <View style={tailwind('flex flex-row ml-2 mt-2 mb-2')}>
-          {images.map(item => (
-            <ImageItem item={item} updateData={this.updateData} />
-          ))}
-        </View>
-      </ScrollView>
+      <View style={tailwind('flex flex-row')}>
+        {/* Кнопка "+" */}
+
+        <Button
+          element={{
+            style: this.props.element.style,
+            title: this.state.title,
+            onPress: () => {
+              this.state.onPress()
+            }
+          }}
+        />
+        {/* Превьюхи */}
+        <ScrollView horizontal={true}>
+          <View style={tailwind('flex flex-row ml-2 mt-2 mb-2')}>
+            {images.map(item => (
+              <ImageItem item={item} updateData={this.updateData} />
+            ))}
+          </View>
+        </ScrollView>
+      </View>
     )
   }
 }
