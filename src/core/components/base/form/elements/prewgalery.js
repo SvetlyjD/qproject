@@ -8,22 +8,29 @@ import style from '@style/'
 import ImageItem from './imageItem'
 
 export class PrevGalery extends FormElement {
- 
   constructor(_props) {
-          super(_props)
-          this.state = {
-            c:null
-          }
-        }
+    super(_props)
+
+    this.state = {
+      images: this.props.element.getActiveImages()
+    }
+  }
+
+  updateData = id => {
+    const current = Array.from(this.state.images)
+    const filtered = current.filter(item => item.id !== id)
+    this.setState({ images: filtered }, () => {
+      this.props.element.setActiveImages(filtered)
+    })
+  }
 
   render() {
-// this.setState({c:async() => await Helpers.Store.get('del')})
-    Helpers.log(this.state.c);
+    const images = this.state.images
     return (
       <ScrollView horizontal={true}>
         <View style={tailwind('flex flex-row ml-2 mt-2 mb-2')}>
-          {this.props.element.elem.map(item => (
-            <ImageItem item={item} />
+          {images.map(item => (
+            <ImageItem item={item} updateData={this.updateData} />
           ))}
         </View>
       </ScrollView>
