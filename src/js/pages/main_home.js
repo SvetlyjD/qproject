@@ -28,6 +28,7 @@ let c = [
     url: 'https://static.wikia.nocookie.net/pokemon/images/e/e2/133Eevee.png/revision/latest/smart/width/250/height/250?cb=20130818174825&path-prefix=ru'
   }
 ]
+let SubmitData = []
 
 export class AuthSignin extends Page {
   // смотрим класс Page какие пропсы он передает
@@ -37,12 +38,14 @@ export class AuthSignin extends Page {
     this.state = {
       // описываем состояние каждого элемента на странице авторизации
       imagesGallery: [],
+      selectTitle: 'Общая',
       elements: [
         {
           elementType: Form.BaseElementTypes.Input,
           label: '',
           status: 'control',
-          placeholder: 'наименование темы'
+          placeholder: 'Input',
+          onChangeValue: this.onInputChange
         },
         {
           elementType: Form.BaseElementTypes.Input,
@@ -51,7 +54,8 @@ export class AuthSignin extends Page {
           textStyle: { minHeight: 64 },
           status: 'control',
           name: 'email',
-          onChangeValue: this.onEmailChange
+          placeholder: 'Big Input',
+          onChangeValue: this.onBigInputChange
         },
         {
           elementType: Form.BaseElementTypes.Button,
@@ -66,7 +70,6 @@ export class AuthSignin extends Page {
               ],
               onChange: value => this.setState({ selectTitle: value.title })
             })
-            Helpers.log(this.state.selectTitle)
           }
         },
         {
@@ -133,8 +136,20 @@ export class AuthSignin extends Page {
     return this.state.imagesGallery
   }
 
-  onSubmit = ({ data }) => {
-    Helpers.log(this.state.imagesGallery)
+  onInputChange = value => {
+    this.setState({ Input: value })
+  }
+
+  onBigInputChange = value => {
+    this.setState({ BigInput: value })
+  }
+
+  onSubmit = () => {
+    SubmitData.push(this.state.Input)
+    SubmitData.push(this.state.BigInput)
+    SubmitData.push(this.state.selectTitle)
+    SubmitData.push(this.state.imagesGallery)
+    Helpers.log(SubmitData)
   }
 
   render() {
